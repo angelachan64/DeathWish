@@ -56,7 +56,7 @@ public class BaseChar{
     }
 
     //Exp
-    public void setmana(int n){
+    public void setexp(int n){
 	mana = n;
     }
     public int getmana(){
