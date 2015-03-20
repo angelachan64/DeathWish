@@ -51,29 +51,39 @@ public class BaseChar{
     public void setlevel(int n){
 	level = n;
     }
-    public int getmana(){
-	return mana;
+    public int getlevel(){
+	return level;
     }
 
     //Exp
-    public void setmana(int n){
-	mana = n;
+    public void setupexp(){
+	exp = 0;
     }
-    public int getmana(){
-	return mana;
+    public void addexp(int n){
+	if (exp + n > maxexp){
+	    exp += n;
+	} else{
+	    exp = n - (maxexp - exp)
+	}
+    }
+    public int getexp(){
+	return exp;
     }
 
     //MaxExp
-    public void setmana(int n){
-	mana = n;
+    public void setupmaxexp(int n){
+	maxexp = n;
     }
-    public int getmana(){
-	return mana;
+    public void setmaxexp(int n){
+	maxexp += n;
+    }
+    public int getmaxexp(){
+	return maxexp;
     }
 
     //Strength
-    public void setmana(int n){
-	mana = n;
+    public void setstrength(int n){
+	strength = n;
     }
     public int getmana(){
 	return mana;
