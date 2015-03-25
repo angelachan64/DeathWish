@@ -4,7 +4,7 @@ import java.io.*;
 public class BaseChar{
     private int health, mana,maxhealth,maxmana;
     private int level,exp,maxexp;
-    private int strength,intelligence,defense,luck,charisma;
+    private int strength,intelligence,dexterity,defense,luck,charisma;
     private String name;
 
     //Name
@@ -19,6 +19,9 @@ public class BaseChar{
     public void sethealth(int n){
 	health = n;
     }
+    public void addhealth(int n){
+	health = health + n;
+    }
     public int gethealth(){
 	return health;
     }
@@ -26,6 +29,9 @@ public class BaseChar{
     //MaxHealth
     public void setmaxhealth(int n){
 	maxhealth = n;
+    }
+    public void addmaxhealth(int n){
+	health = health + n;
     }
     public int getmaxhealth(){
 	return maxhealth;
@@ -35,6 +41,9 @@ public class BaseChar{
     public void setmana(int n){
 	mana = n;
     }
+    public void addmana(int n){
+	mana = mana + n;
+    }
     public int getmana(){
 	return mana;
     }
@@ -43,13 +52,16 @@ public class BaseChar{
     public void setmaxmana(int n){
 	maxmana = n;
     }
+    public void addmaxmana(int n){
+	maxmana = maxmana + n;
+    }
     public int getmaxmana(){
 	return maxmana;
     }
 
     //Level
-    public void setlevel(int n){
-	level = n;
+    public void setuplevel(int n){
+	level = 1;
     }
     public int getlevel(){
 	return level;
@@ -85,40 +97,66 @@ public class BaseChar{
     public void setstrength(int n){
 	strength = n;
     }
-    public int getmana(){
-	return mana;
+    public void addstrength(int n){
+	strength = strength + n;
+    }
+    public int getstrength(){
+	return strength;
     }
 
     //Intelligence
-    public void setmana(int n){
-	mana = n;
+    public void setint(int n){
+	intelligence = n;
     }
-    public int getmana(){
-	return mana;
+    public void addint(int n){
+	intelligence = intelligence + n;
+    }
+    public int getint(){
+	return intelligence;
+    }
+
+    //Dexterity
+    public void setdex(int n){
+	dexterity = n;
+    }
+    public void adddex(int n){
+	dexterity = dexterity + n;
+    }
+    public int getdex(){
+	return dexterity;
     }
 
     //Defense
-    public void setmana(int n){
-	mana = n;
+    public void setdef(int n){
+	defense = n;
     }
-    public int getmana(){
-	return mana;
+    public void adddef(int n){
+	defense = defense + n;
+    }
+    public int getdef(){
+	return defense;
     }
 
     //Luck
-    public void setmana(int n){
-	mana = n;
+    public void setluck(int n){
+	luck = n;
     }
-    public int getmana(){
-	return mana;
+    public void addluck(int n){
+	luck = luck + n;
+    }
+    public int getluck(){
+	return luck;
     }
 
     //Charisma
-    public void setmana(int n){
-	mana = n;
+    public void setchar(int n){
+	charisma = n;
     }
-    public int getmana(){
-	return mana;
+    public void addchar(int n){
+	charisma = charisma + n;
+    }
+    public int getchar(){
+	return charisma;
     }
 
 }
