@@ -86,7 +86,7 @@ public class BaseChar{
     public void setupmaxexp(int n){
 	maxexp = n;
     }
-    public void setmaxexp(int n){
+    public void addmaxexp(int n){
 	maxexp += n;
     }
     public int getmaxexp(){
