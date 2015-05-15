@@ -6,6 +6,21 @@ public class BaseChar{
     private int level,exp,maxexp;
     private int strength,intelligence,dexterity,defense,luck,charisma;
     private String name;
+    private boolean Mage,Thief,Warrior,Archer,Cleric;
+
+    public BaseChar(){
+	health = 50; mana = 50; maxhealth = 50; maxmana = 50;
+	level = 1; exp = 0; maxexp = 20;
+	strength = 10; intelligence = 10; dexterity = 10; defense = 10;
+	luck = 10; charisma = 10;
+    }
+    public BaseChar(String s){
+	health = 50; mana = 50; maxhealth = 50; maxmana = 50;
+	level = 1; exp = 0; maxexp = 20;
+	strength = 10; intelligence = 10; dexterity = 10; defense = 10;
+	luck = 10; charisma = 10;
+	name = s;
+    }
 
     //Name
     public void setName(String s){
@@ -159,4 +174,20 @@ public class BaseChar{
 	return charisma;
     }
 
+    //Check class
+    public boolean isMage(){
+	return Mage;
+    }
+    public boolean isThief(){
+	return Thief;
+    }
+    public boolean isWarrior(){
+	return Warrior;
+    }
+    public boolean isArcher(){
+	return Archer;
+    }
+    public boolean isCleric(){
+	return Cleric;
+    }
 }
