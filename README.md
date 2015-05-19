@@ -1,2 +1,2 @@
-# By Angela Chan & Jason Shin
-c:
+# Death Wish
+By Angela Chan & Jason Shin
