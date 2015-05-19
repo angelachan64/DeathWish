@@ -91,6 +91,7 @@ public class BaseChar{
 	    exp += n;
 	} else{
 	    exp = n - (maxexp - exp)
+	    level++;
 	}
     }
     public int getexp(){
