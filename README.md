@@ -1,2 +1,2 @@
-# Game
-c:
+# Death Wish
+By Angela Chan & Jason Shin
