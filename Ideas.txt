@@ -1,0 +1,42 @@
+Health, Mana, Strength, Intelligence, Dexterity, Defense,
+Luck, Charisma
+
+Plan for Deathwish:
+-Set up all the stats for each of the classes:
+    *Mage, Thief, Warrior, Archer, Cleric
+-Level up stat changes
+    * prevstat + k(1 + ((level-1)*0.01))
+    * prevstat + k + (level)
+-Convert to Processing
+
+Ideas:
+-Save method (write to a file?)
+-Start with a basechar, choose class at level 15, 30
+-Specializations of classes
+    *Mage -->
+        * Necromancer
+        * Pyromancer
+        * Summoner
+    *Thief -->
+        * Assassin
+        * Shadow Walker
+        * Reaper
+    *Warrior -->
+        * Berserker
+        * Mercenary
+        * Guardian
+    *Archer -->
+        * Hunter
+        * Trainer
+        * Crossbow Sniper
+    *Cleric -->
+        * Priest
+        * Bard
+        * Medic
+-Free roaming map
+    *Preset town in the middle, randomly generate as you go
+     farther out
+SKILLS:
+Basic:
+- Lunge
+- 

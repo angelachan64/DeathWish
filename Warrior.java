@@ -1,27 +1,27 @@
-public class Mage extends BaseChar{
+public class Warrior extends BaseChar{
     private int health, mana,maxhealth,maxmana;
     private int level,exp,maxexp;
     private int strength,intelligence,dexterity,defense,luck,charisma;
     private String name;
-    private boolean Mage=true,Thief=false,Warrior=false;
+    private boolean Mage=false,Thief=false,Warrior=true;
     private boolean Archer=false,Cleric=false;
     
-    public Mage(){
-	health = 40; mana = 75; maxhealth = 40; maxmana = 75;
+    public Warrior(){
+	health = 75; mana = 40; maxhealth = 75; maxmana = 40;
 	level = 1; exp = 0; maxexp = 20;
-	strength = 8; intelligence = 15; dexterity = 10; defense = 7;
-	luck = 10; charisma = 10;
+	strength = 15; intelligence = 7; dexterity = 10; defense = 10;
+	luck = 8; charisma = 10;
     }
-    public Mage(BaseChar bc){
-        this.name = bc.getName();
-    	health = bc.gethealth() + 10;
-    	mana = bc.getmana() + 25;
-    	strength = bc.getstrength(); 
-    	intelligence = bc.getint() + 25;
-    	dexterity = bc.getdex() + 10;
-    	defense = bc.getdef();
+    public Warrior(BaseChar bc){
+        name = bc.getName();
+    	health = bc.gethealth() + 25;
+    	mana = bc.getmana() + 10;
+    	strength = bc.getstrength() + 25;
+    	intelligence = bc.getint();
+    	dexterity = bc.getdex();
+    	defense = bc.getdef() + 10;
     	luck = bc.getluck();
-    	charisma = bc.getchar(); 
+    	charisma = bc.getchar();
     }
     //Name
     public void setName(String s){
@@ -97,21 +97,21 @@ public class Mage extends BaseChar{
 	        exp = exp - maxexp;
 	        level++;
 	        maxexp = maxexp + maxexp/4;
-	        maxhealth += maxhealth/4;
+	        maxhealth += maxhealth/3;
 	        health = maxhealth;
-	        maxmana += maxmana/3;
+	        maxmana += maxmana/4;
 	        mana = maxmana;
-	        strength += 2;
-	        intelligence += 4;
-	        dexterity += 3;
-	        defense += 2;
+	        strength += 4;
+	        intelligence += 2;
+	        dexterity += 2;
+	        defense += 3;
 	        luck += 2;
 	        charisma += 2;
 	    }
     }
     }
-    public String getexp(){
-	return "" + exp + "/" + maxexp;
+    public int getexp(){
+	return exp;
     }
 
     //MaxExp

@@ -1,26 +1,26 @@
-public class Mage extends BaseChar{
+public class Archer extends BaseChar{
     private int health, mana,maxhealth,maxmana;
     private int level,exp,maxexp;
     private int strength,intelligence,dexterity,defense,luck,charisma;
     private String name;
-    private boolean Mage=true,Thief=false,Warrior=false;
-    private boolean Archer=false,Cleric=false;
+    private boolean Mage=false,Thief=false,Warrior=false;
+    private boolean Archer=true,Cleric=false;
     
-    public Mage(){
-	health = 40; mana = 75; maxhealth = 40; maxmana = 75;
+    public Archer(){
+	health = 50; mana = 50; maxhealth = 50; maxmana = 50;
 	level = 1; exp = 0; maxexp = 20;
-	strength = 8; intelligence = 15; dexterity = 10; defense = 7;
+	strength = 10; intelligence = 10; dexterity = 10; defense = 10;
 	luck = 10; charisma = 10;
     }
-    public Mage(BaseChar bc){
-        this.name = bc.getName();
+    public Archer(BaseChar bc){
+        name = bc.getName();
     	health = bc.gethealth() + 10;
     	mana = bc.getmana() + 25;
-    	strength = bc.getstrength(); 
-    	intelligence = bc.getint() + 25;
-    	dexterity = bc.getdex() + 10;
+    	strength = bc.getstrength();
+    	intelligence = bc.getint();
+    	dexterity = bc.getdex() + 25;
     	defense = bc.getdef();
-    	luck = bc.getluck();
+    	luck = bc.getluck() + 10;
     	charisma = bc.getchar(); 
     }
     //Name
@@ -102,16 +102,16 @@ public class Mage extends BaseChar{
 	        maxmana += maxmana/3;
 	        mana = maxmana;
 	        strength += 2;
-	        intelligence += 4;
-	        dexterity += 3;
+	        intelligence += 2;
+	        dexterity += 4;
 	        defense += 2;
-	        luck += 2;
+	        luck += 3;
 	        charisma += 2;
 	    }
     }
     }
-    public String getexp(){
-	return "" + exp + "/" + maxexp;
+    public int getexp(){
+	return exp;
     }
 
     //MaxExp

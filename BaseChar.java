@@ -87,15 +87,30 @@ public class BaseChar{
 	exp = 0;
     }
     public void addexp(int n){
-	if (exp + n > maxexp){
+	if (exp + n < maxexp){
 	    exp += n;
 	} else{
-	    exp = n - (maxexp - exp)
-	    level++;
-	}
+	    exp = n;
+	    while (exp > maxexp){
+	        System.out.println(getexp());
+	        exp = exp - maxexp;
+	        level++;
+	        maxexp = maxexp + maxexp/4;
+	        maxhealth += maxhealth/4;
+	        health = maxhealth;
+	        maxmana += maxmana/4;
+	        mana = maxmana;
+	        strength += 2;
+	        intelligence += 2;
+	        dexterity += 2;
+	        defense += 2;
+	        luck += 2;
+	        charisma += 2;
+	    }
     }
-    public int getexp(){
-	return exp;
+    }
+    public String getexp(){
+	return ""+exp + "/" + maxexp;
     }
 
     //MaxExp
