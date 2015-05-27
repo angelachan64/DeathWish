@@ -40,6 +40,14 @@ public class BaseChar{
     public int gethealth(){
 	return health;
     }
+    public void losehealth(int n){
+        if (health-n <= 0){
+            health = 0;
+            System.out.println(this.getName() + " has died!");
+        } else{
+            health -= n;
+        }
+    }
 
     //MaxHealth
     public void setmaxhealth(int n){
@@ -61,6 +69,15 @@ public class BaseChar{
     }
     public int getmana(){
 	return mana;
+    }
+    public boolean losemana(int n){
+        if (mana-n < 0){
+            System.out.println("Not enough mana!");
+            return false;
+        } else{
+            mana -= n;
+            return true;
+        }
     }
     
     //MaxMana
@@ -205,5 +222,100 @@ public class BaseChar{
     }
     public boolean isCleric(){
 	return Cleric;
+    }
+    
+    //Rates
+    public boolean isCrit(){
+        Random r = new Random();
+        int rate = this.getluck();
+        if (r.nextInt(1000) < (rate - (rate%10))){
+            return true;
+        } return false;
+    }
+    public boolean dodge(){
+        Random r = new Random();
+        int rate = this.getdex();
+        if (r.nextInt(1000) < (rate - (rate%10))){
+            return true;
+        } return false;
+    }
+    
+    //Skills
+    public void Lunge(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int str = this.getstrength()/2;
+            int atk = str + r.nextInt(2*(str/4) + 1) - str/4;
+            if (this.isCrit()){
+                atk = atk * 2;
+                crit = true;
+            } System.out.println(this.getName() + " lunged at " + other.getName() + "!");
+            if (other.dodge()){
+                System.out.println(other.getName() + " dodged the attack!");
+            } else{
+                if (crit){
+                    System.out.println("Critical hit!");
+                } System.out.println(other.getName() + " has lost " + atk + " health.");
+                other.losehealth(atk);
+                System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+            }
+        }
+    }
+    public void Slash(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int str = this.getstrength()/2 + 2;
+            int atk = str + r.nextInt(2*(str/3) + 1) - str/3;
+            if (this.losemana(10)){
+                if (this.isCrit()){
+                    atk = atk * 2;
+                    crit = true;
+                } System.out.println(this.getName() + " slashed at " + other.getName() + "!");
+                if (other.dodge()){
+                    System.out.println(other.getName() + " dodged the attack!");
+                } else{
+                    if (crit){
+                        System.out.println("Critical hit!");
+                    } System.out.println(other.getName() + " has lost " + atk + " health.");
+                    other.losehealth(atk);
+                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+                }
+            }
+        }
+    }
+    public void Throw(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int mana = this.getmana();
+            int str = this.getstrength()/2 + 2;
+            int atk = str + r.nextInt(2*(str/3) + 1) - str/3;
+            if (this.losemana(10)){
+                if (this.isCrit()){
+                    atk = atk * 2;
+                    crit = true;
+                } System.out.println(this.getName() + " threw a dagger at " + other.getName() + "!");
+                if (other.dodge()){
+                    System.out.println(other.getName() + " dodged the attack!");
+                } else{
+                    if (crit){
+                        System.out.println("Critical hit!");
+                    } System.out.println(other.getName() + " has lost " + atk + " health.");
+                    other.losehealth(atk);
+                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+                }
+            }
+        }
     }
 }

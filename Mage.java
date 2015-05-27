@@ -190,4 +190,6 @@ public class Mage extends BaseChar{
     public int getchar(){
 	return charisma;
     }
+    
+    //Skills
 }

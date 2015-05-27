@@ -5,12 +5,19 @@ public class Driver{
     public static void main(String[] args){
 	//Game g = new Game();
     BaseChar bc = new BaseChar("Diddlysquat");
-    bc.addexp(1000);
-    System.out.println(bc.getlevel());
-    System.out.println(bc.getexp());
-    System.out.println(bc.getint());
-    bc = new Mage(bc);
-    System.out.println(bc.getName());
-    System.out.println(bc.getint());
+    BaseChar other = new BaseChar("Opponent");
+    bc.Throw(other);
+    bc.Throw(other);
+    bc.Throw(other);
+    bc.Throw(other);
+    bc.Throw(other);
+    bc.Slash(other);
+    bc.Slash(other);
+    bc.Lunge(other);
+    bc.Lunge(other);
+    bc.Slash(other);
+    bc.Lunge(other);
+    bc.Lunge(other);
+    bc.Lunge(other);
     }
 }
