@@ -299,8 +299,8 @@ public class BaseChar{
             Random r = new Random();
             boolean crit = false;
             int mana = this.getmana();
-            int str = this.getstrength()/2 + 2;
-            int atk = str + r.nextInt(2*(str/3) + 1) - str/3;
+            int str = this.getstrength()/2 + 4;
+            int atk = str + r.nextInt(2*(str/2) + 1) - str/2;
             if (this.losemana(10)){
                 if (this.isCrit()){
                     atk = atk * 2;
@@ -317,5 +317,14 @@ public class BaseChar{
                 }
             }
         }
+    }
+    public void ArcBall(BaseChar other){
+        return;
+    }
+    public void Lightning(BaseChar other){
+        return;
+    }
+    public void Tornado(BaseChar other){
+        return;
     }
 }

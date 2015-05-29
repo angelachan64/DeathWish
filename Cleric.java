@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class Cleric extends BaseChar{
     private int health, mana,maxhealth,maxmana;
     private int level,exp,maxexp;
@@ -41,6 +44,14 @@ public class Cleric extends BaseChar{
     public int gethealth(){
 	return health;
     }
+    public void losehealth(int n){
+        if (health-n <= 0){
+            health = 0;
+            System.out.println(this.getName() + " has died!");
+        } else{
+            health -= n;
+        }
+    }
 
     //MaxHealth
     public void setmaxhealth(int n){
@@ -62,6 +73,15 @@ public class Cleric extends BaseChar{
     }
     public int getmana(){
 	return mana;
+    }
+    public boolean losemana(int n){
+        if (mana-n < 0){
+            System.out.println("Not enough mana!");
+            return false;
+        } else{
+            mana -= n;
+            return true;
+        }
     }
     
     //MaxMana
@@ -110,8 +130,8 @@ public class Cleric extends BaseChar{
 	    }
     }
     }
-    public int getexp(){
-	return exp;
+    public String getexp(){
+	return "" + exp + "/" + maxexp;
     }
 
     //MaxExp

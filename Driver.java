@@ -6,18 +6,22 @@ public class Driver{
 	//Game g = new Game();
     BaseChar bc = new BaseChar("Diddlysquat");
     BaseChar other = new BaseChar("Opponent");
-    bc.Throw(other);
-    bc.Throw(other);
-    bc.Throw(other);
-    bc.Throw(other);
-    bc.Throw(other);
-    bc.Slash(other);
-    bc.Slash(other);
-    bc.Lunge(other);
-    bc.Lunge(other);
-    bc.Slash(other);
-    bc.Lunge(other);
-    bc.Lunge(other);
-    bc.Lunge(other);
+    bc = new Mage(bc);
+    other = new Cleric(other);
+    //bc.Throw(other);
+    //bc.Throw(other);
+    //bc.Throw(other);
+    //bc.Throw(other);
+    //bc.Throw(other);
+    //bc.Slash(other);
+    //bc.Slash(other);
+    bc.ArcBall(other);
+    bc.Lightning(other);
+    bc.Tornado(other);
+    //bc.Lunge(other);
+    //bc.Slash(other);
+    //bc.Lunge(other);
+    //bc.Lunge(other);
+    //bc.Lunge(other);
     }
 }
