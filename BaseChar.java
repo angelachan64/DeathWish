@@ -109,7 +109,6 @@ public class BaseChar{
 	} else{
 	    exp = n;
 	    while (exp > maxexp){
-	        System.out.println(getexp());
 	        exp = exp - maxexp;
 	        level++;
 	        maxexp = maxexp + maxexp/4;
@@ -126,8 +125,11 @@ public class BaseChar{
 	    }
     }
     }
-    public String getexp(){
+    public String getexpS(){
 	return ""+exp + "/" + maxexp;
+    }
+    public int getexp(){
+        return exp;
     }
 
     //MaxExp
@@ -249,7 +251,7 @@ public class BaseChar{
             Random r = new Random();
             boolean crit = false;
             int str = this.getstrength()/2;
-            int atk = str + r.nextInt(2*(str/4) + 1) - str/4;
+            int atk = str + r.nextInt(str/4) - str/2;
             if (this.isCrit()){
                 atk = atk * 2;
                 crit = true;
@@ -273,8 +275,8 @@ public class BaseChar{
             Random r = new Random();
             boolean crit = false;
             int str = this.getstrength()/2 + 2;
-            int atk = str + r.nextInt(2*(str/3) + 1) - str/3;
-            if (this.losemana(10)){
+            int atk = str + r.nextInt(str/4) - str/3;
+            if (this.losemana(5)){
                 if (this.isCrit()){
                     atk = atk * 2;
                     crit = true;
@@ -300,7 +302,7 @@ public class BaseChar{
             boolean crit = false;
             int mana = this.getmana();
             int str = this.getstrength()/2 + 4;
-            int atk = str + r.nextInt(2*(str/2) + 1) - str/2;
+            int atk = str + r.nextInt(str/4) - str/4;
             if (this.losemana(10)){
                 if (this.isCrit()){
                     atk = atk * 2;
@@ -325,6 +327,24 @@ public class BaseChar{
         return;
     }
     public void Tornado(BaseChar other){
+        return;
+    }
+    public void Zombie(BaseChar other){
+        return;
+    }
+    public void Skeleton(BaseChar other){
+        return;
+    }
+    public void Reaper(BaseChar other){
+        return;
+    }
+    public void Fireball(BaseChar other){
+        return;
+    }
+    public void Incinerate(BaseChar other){
+        return;
+    }
+    public void Phoenix(BaseChar other){
         return;
     }
 }

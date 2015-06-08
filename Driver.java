@@ -12,7 +12,6 @@ public class Driver{
     //bc.Throw(other);
     //bc.Throw(other);
     //bc.Throw(other);
-    //bc.Throw(other);
     //bc.Slash(other);
     //bc.Slash(other);
     bc.ArcBall(other);
@@ -23,5 +22,12 @@ public class Driver{
     //bc.Lunge(other);
     //bc.Lunge(other);
     //bc.Lunge(other);
+    bc = new Pyromancer(bc);
+    other = new BaseChar("Opponent");
+    other = new Warrior(other);
+    other.addexp(1000);
+    bc.Fireball(other);
+    bc.Incinerate(other);
+    bc.Phoenix(other);
     }
 }

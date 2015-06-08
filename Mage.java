@@ -17,14 +17,19 @@ public class Mage extends BaseChar{
     }
     public Mage(BaseChar bc){
         this.name = bc.getName();
-    	health = bc.gethealth() + 10;
-    	mana = bc.getmana() + 25;
+    	maxhealth = bc.getmaxhealth() + 10;
+    	health = maxhealth;
+    	maxmana = bc.getmaxmana() + 25;
+    	mana = maxmana;
     	strength = bc.getstrength(); 
     	intelligence = bc.getint() + 25;
     	dexterity = bc.getdex() + 10;
     	defense = bc.getdef();
     	luck = bc.getluck();
     	charisma = bc.getchar(); 
+    	level = bc.getlevel();
+    	exp = bc.getexp();
+    	maxexp = bc.getmaxexp();
     }
     //Name
     public void setName(String s){
@@ -114,7 +119,6 @@ public class Mage extends BaseChar{
 	} else{
 	    exp = n;
 	    while (exp > maxexp){
-	        System.out.println(getexp());
 	        exp = exp - maxexp;
 	        level++;
 	        maxexp = maxexp + maxexp/4;
@@ -131,8 +135,11 @@ public class Mage extends BaseChar{
 	    }
     }
     }
-    public String getexp(){
+    public String getexpS(){
 	return "" + exp + "/" + maxexp;
+    }
+    public int getexp(){
+        return exp;
     }
 
     //MaxExp
@@ -213,7 +220,7 @@ public class Mage extends BaseChar{
     }
     
     //Rates
-    public boolean isCrit(){
+    /*public boolean isCrit(){
         Random r = new Random();
         int rate = this.getluck();
         if (r.nextInt(1000) < (rate - (rate%10))){
@@ -226,7 +233,7 @@ public class Mage extends BaseChar{
         if (r.nextInt(1000) < (rate - (rate%10))){
             return true;
         } return false;
-    }
+    }*/
     
     //Skills
     public void ArcBall(BaseChar other){
@@ -237,7 +244,7 @@ public class Mage extends BaseChar{
             Random r = new Random();
             boolean crit = false;
             int str = this.getint()/2;
-            int atk = str + r.nextInt(2*(str/4) + 1) - str/4;
+            int atk = str + r.nextInt(str/4) - str/3;
             if (this.isCrit()){
                 atk = atk * 2;
                 crit = true;
@@ -262,7 +269,7 @@ public class Mage extends BaseChar{
             boolean crit = false;
             int mana = this.getmana();
             int str = this.getint()/2 + 2;
-            int atk = str + r.nextInt(2*(str/3) + 1) - str/4;
+            int atk = str + r.nextInt(str/4) - str/4;
             if (this.losemana(10)){
                 if (this.isCrit()){
                     atk = atk * 2;
@@ -289,8 +296,8 @@ public class Mage extends BaseChar{
             boolean crit = false;
             int mana = this.getmana();
             int str = this.getint()/2 + 4;
-            int atk = str + r.nextInt(2*(str/2) + 1) - str/4;
-            if (this.losemana(10)){
+            int atk = str + r.nextInt(str/4) - str/5;
+            if (this.losemana(15)){
                 if (this.isCrit()){
                     atk = atk * 2;
                     crit = true;
@@ -306,5 +313,23 @@ public class Mage extends BaseChar{
                 }
             }
         }
+    }
+    public void Zombie(BaseChar other){
+        return;
+    }
+    public void Skeleton(BaseChar other){
+        return;
+    }
+    public void Reaper(BaseChar other){
+        return;
+    }
+    public void Fireball(BaseChar other){
+        return;
+    }
+    public void Incinerate(BaseChar other){
+        return;
+    }
+    public void Phoenix(BaseChar other){
+        return;
     }
 }

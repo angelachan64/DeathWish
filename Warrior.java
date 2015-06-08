@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class Warrior extends BaseChar{
     private int health, mana,maxhealth,maxmana;
     private int level,exp,maxexp;
@@ -13,15 +16,20 @@ public class Warrior extends BaseChar{
 	luck = 8; charisma = 10;
     }
     public Warrior(BaseChar bc){
-        name = bc.getName();
-    	health = bc.gethealth() + 25;
-    	mana = bc.getmana() + 10;
+        this.name = bc.getName();
+        maxhealth = bc.getmaxhealth() + 25;
+    	health = maxhealth;
+    	maxmana = bc.getmaxmana() + 10;
+    	mana = maxmana;
     	strength = bc.getstrength() + 25;
     	intelligence = bc.getint();
     	dexterity = bc.getdex();
     	defense = bc.getdef() + 10;
     	luck = bc.getluck();
     	charisma = bc.getchar();
+    	level = bc.getlevel();
+    	exp = bc.getexp();
+    	maxexp = bc.getmaxexp();
     }
     //Name
     public void setName(String s){
@@ -110,7 +118,6 @@ public class Warrior extends BaseChar{
 	} else{
 	    exp = n;
 	    while (exp > maxexp){
-	        System.out.println(getexp());
 	        exp = exp - maxexp;
 	        level++;
 	        maxexp = maxexp + maxexp/4;
@@ -127,8 +134,11 @@ public class Warrior extends BaseChar{
 	    }
     }
     }
+    public String getexpS(){
+	return "" + exp + "/" + maxexp;
+    }
     public int getexp(){
-	return exp;
+        return exp;
     }
 
     //MaxExp
@@ -206,5 +216,85 @@ public class Warrior extends BaseChar{
     }
     public int getchar(){
 	return charisma;
+    }
+    
+        //Skills
+    public void ArcBall(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int str = this.getint()/2;
+            int atk = str + r.nextInt(2*(str/4) + 1) - str/4;
+            if (this.isCrit()){
+                atk = atk * 2;
+                crit = true;
+            } System.out.println(this.getName() + " shoots a ball of magic at " + other.getName() + "!");
+            if (other.dodge()){
+                System.out.println(other.getName() + " dodged the attack!");
+            } else{
+                if (crit){
+                    System.out.println("Critical hit!");
+                } System.out.println(other.getName() + " has lost " + atk + " health.");
+                other.losehealth(atk);
+                System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+            }
+        }
+    }
+    public void Lightning(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int mana = this.getmana();
+            int str = this.getint()/2 + 2;
+            int atk = str + r.nextInt(2*(str/3) + 1) - str/4;
+            if (this.losemana(10)){
+                if (this.isCrit()){
+                    atk = atk * 2;
+                    crit = true;
+                } System.out.println(this.getName() + " strikes at " + other.getName() + " with lightning!");
+                if (other.dodge()){
+                    System.out.println(other.getName() + " dodged the attack!");
+                } else{
+                    if (crit){
+                        System.out.println("Critical hit!");
+                    } System.out.println(other.getName() + " has lost " + atk + " health.");
+                    other.losehealth(atk);
+                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+                }
+            }
+        }
+    }
+    public void Tornado(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int mana = this.getmana();
+            int str = this.getint()/2 + 4;
+            int atk = str + r.nextInt(2*(str/2) + 1) - str/4;
+            if (this.losemana(10)){
+                if (this.isCrit()){
+                    atk = atk * 2;
+                    crit = true;
+                } System.out.println(this.getName() + " summons a tornado over " + other.getName() + "!");
+                if (other.dodge()){
+                    System.out.println(other.getName() + " dodged the attack!");
+                } else{
+                    if (crit){
+                        System.out.println("Critical hit!");
+                    } System.out.println(other.getName() + " has lost " + atk + " health.");
+                    other.losehealth(atk);
+                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+                }
+            }
+        }
     }
 }
