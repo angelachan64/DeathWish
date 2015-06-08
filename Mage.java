@@ -332,4 +332,13 @@ public class Mage extends BaseChar{
     public void Phoenix(BaseChar other){
         return;
     }
+    public void Falcon(BaseChar other){
+        return;
+    }
+    public void Bear(BaseChar other){
+        return;
+    }
+    public void Dragon(BaseChar other){
+        return;
+    }
 }
