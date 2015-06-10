@@ -1,0 +1,11 @@
+1.) Are you a male or a female? Press M for male and F for female.
+2.) Do you like being surrounded by nature? Press Y for yes and N for no.
+3.) Have you played any other RPG games before? Press Y for yes and N for no.
+4.) Do you enjoy action movies? Press Y for yes and N for no.
+5.) Do you like trying new things? Press Y for yes and N for no.
+6.) Have you ever gone hiking before? Press Y for yes and N for no.
+7.) Do you prefer dogs over cats? Press Y for yes and N for no.
+8.) Do you consider yourself an outgoing person? Press Y for yes and N for no.
+9.) Do you enjoy physical activities/exercising? Press Y for yes and N for no.
+10.)
+11.) 
