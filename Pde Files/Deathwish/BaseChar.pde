@@ -5,7 +5,7 @@ class BaseChar{
     private int health, mana,maxhealth,maxmana;
     private int level,exp,maxexp;
     private int strength,intelligence,dexterity,defense,luck,charisma;
-    private int xpos, ypos;
+    private int xpos, ypos, spnum;
     private String name, spname;
     private boolean Mage,Thief,Warrior,Archer,Cleric;
     private PImage[] spritemoves = new PImage[4];
@@ -14,7 +14,7 @@ class BaseChar{
       health = 50; mana = 50; maxhealth = 50; maxmana = 50;
       level = 1; exp = 0; maxexp = 20;
       strength = 10; intelligence = 10; dexterity = 10; defense = 10;
-      luck = 10; charisma = 10; spname = "AverageM";
+      luck = 10; charisma = 10; spname = "AverageM"; spnum = 0;
       for (int i = 0; i < 4; i++) {
         spritemoves[i] = loadImage(spname + (i + 1) + ".png");
        }
@@ -23,7 +23,7 @@ class BaseChar{
       health = 50; mana = 50; maxhealth = 50; maxmana = 50;
       level = 1; exp = 0; maxexp = 20;
       strength = 10; intelligence = 10; dexterity = 10; defense = 10;
-      luck = 10; charisma = 10; spname = "AverageM";
+      luck = 10; charisma = 10; spname = "AverageM"; spnum = 0;
       name = s;
       for (int i = 0; i < 4; i++) {
         spritemoves[i] = loadImage(spname + (i + 1) + ".png");
@@ -32,8 +32,15 @@ class BaseChar{
     
     //Display Sprite
   void display() {
-   image(spritemoves[1], 300, 200);
+   image(spritemoves[spnum], 300, 200);
   }
+  
+  void setspnum(int n) {
+    spnum = n;
+  }
+  
+  int getspnum() {
+    
   
     //Name
     public void setName(String s){
