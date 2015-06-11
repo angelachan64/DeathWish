@@ -6,11 +6,12 @@ honor and glory in his new life as an angel. The storyline follows your journey 
 you fight to maintain the balance between heaven and hell, visit Earth again to
 find your murderer, earn your wings through missions, and rise through the ranks
 above your angel peers.
-
-Directions:
+___
+#Directions:
 
 (TO BE EDITED BY JASON SHIN)
-
+___
+#Credits to:
 Images created by Angela Chan using:
 
 RPG Maker XP
