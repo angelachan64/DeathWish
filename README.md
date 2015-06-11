@@ -8,8 +8,11 @@ find your murderer, earn your wings through missions, and rise through the ranks
 above your angel peers.
 
 Directions:
+
 (TO BE EDITED BY JASON SHIN)
 
 Images created by Angela Chan using:
+
 RPG Maker XP
+
 Character Maker XP
