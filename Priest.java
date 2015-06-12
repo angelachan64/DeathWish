@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Cleric extends BaseChar{
+public class Priest extends Cleric{
     private int health, mana,maxhealth,maxmana;
     private int level,exp,maxexp;
     private int strength,intelligence,dexterity,defense,luck,charisma;
@@ -9,24 +9,37 @@ public class Cleric extends BaseChar{
     private boolean Mage=false,Thief=false,Warrior=false;
     private boolean Archer=false,Cleric=true;
     
-    public Cleric(){
-	health = 50; mana = 50; maxhealth = 50; maxmana = 50;
+    public Necromancer(){
+	health = 40; mana = 75; maxhealth = 40; maxmana = 75;
 	level = 1; exp = 0; maxexp = 20;
-	strength = 10; intelligence = 10; dexterity = 10; defense = 10;
+	strength = 8; intelligence = 15; dexterity = 10; defense = 7;
 	luck = 10; charisma = 10;
     }
-    public Cleric(BaseChar bc){
-        name = bc.getName();
-    	maxhealth = bc.getmaxhealth() + 10;
+    public Priest(BaseChar bc){
+        this.name = bc.getName();
+    	maxhealth = bc.getmaxhealth() + 15;
     	health = maxhealth;
-    	maxmana = bc.getmaxmana() + 25;
+    	maxmana = bc.getmaxmana() + 30;
     	mana = maxmana;
     	strength = bc.getstrength(); 
-    	intelligence = bc.getint() + 25;
-    	dexterity = bc.getdex();
+    	intelligence = bc.getint() + 30;
+    	dexterity = bc.getdex() + 15;
     	defense = bc.getdef();
     	luck = bc.getluck();
-    	charisma = bc.getchar() + 10; 
+    	charisma = bc.getchar(); 
+    }
+    public Priest(Mage bc){
+        this.name = bc.getName();
+    	maxhealth = bc.getmaxhealth() + 15;
+    	health = maxhealth;
+    	maxmana = bc.getmaxmana() + 30;
+    	mana = maxmana;
+    	strength = bc.getstrength(); 
+    	intelligence = bc.getint() + 30;
+    	dexterity = bc.getdex() + 15;
+    	defense = bc.getdef();
+    	luck = bc.getluck();
+    	charisma = bc.getchar(); 
     }
     //Name
     public void setName(String s){
@@ -93,6 +106,7 @@ public class Cleric extends BaseChar{
         }
     }
     
+    
     //MaxMana
     public void setmaxmana(int n){
 	maxmana = n;
@@ -122,7 +136,6 @@ public class Cleric extends BaseChar{
 	} else{
 	    exp = n;
 	    while (exp > maxexp){
-	        System.out.println(getexp());
 	        exp = exp - maxexp;
 	        level++;
 	        maxexp = maxexp + maxexp/4;
@@ -131,11 +144,11 @@ public class Cleric extends BaseChar{
 	        maxmana += maxmana/3;
 	        mana = maxmana;
 	        strength += 2;
-	        intelligence += 4;
-	        dexterity += 2;
+	        intelligence += 5;
+	        dexterity += 3;
 	        defense += 2;
 	        luck += 2;
-	        charisma += 3;
+	        charisma += 4;
 	    }
     }
     }
@@ -224,47 +237,7 @@ public class Cleric extends BaseChar{
     }
     
     //Skills
-    public void LightBall(BaseChar other){
-        if (other.gethealth() == 0){
-            //System.out.println(other.getName() + " is already dead!");
-            return;
-        } else{
-            Random r = new Random();
-            boolean crit = false;
-            int str = this.getint()/2;
-            int atk = str + r.nextInt(str/4) - str/3;
-            if (this.isCrit()){
-                atk = atk * 2;
-                crit = true;
-            } System.out.println(this.getName() + " shoots a ball of light at " + other.getName() + "!");
-            if (other.dodge()){
-                System.out.println(other.getName() + " dodged the attack!");
-            } else{
-                if (crit){
-                    System.out.println("Critical hit!");
-                } System.out.println(other.getName() + " has lost " + atk + " health.");
-                other.losehealth(atk);
-                System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
-            }
-        }
-    }
-    public void Heal(BaseChar other){
-        if (other.gethealth() == 0){
-            //System.out.println(other.getName() + " is already dead!");
-            return;
-        } else{
-            Random r = new Random();
-            boolean crit = false;
-            int mana = this.getmana();
-            int str = this.getint()/2 + 2;
-            int atk = str + r.nextInt(str/4) - str/4;
-            if (this.losemana(10)){
-                System.out.println(this.getName() + " heals " + other.getName() + "!");
-                System.out.println(other.getName() + " has regained " + atk + "health.");
-            }
-        }
-    }
-    public void SuperHeal(BaseChar other){
+    public void Zombie(BaseChar other){
         if (other.gethealth() == 0){
             //System.out.println(other.getName() + " is already dead!");
             return;
@@ -273,11 +246,75 @@ public class Cleric extends BaseChar{
             boolean crit = false;
             int mana = this.getmana();
             int str = this.getint()/2 + 4;
-            int atk = (str + r.nextInt(str/4) - str/5) * 7/3;
+            int atk = str + r.nextInt(str/4) - str/4;
             if (this.losemana(15)){
-                System.out.println(this.getName() + " heals " + other.getName() + "!");
-                other.addhealth(atk);
-                System.out.println(other.getName() + " has regained " + atk + " health.");
+                if (this.isCrit()){
+                    atk = atk * 2;
+                    crit = true;
+                } System.out.println(this.getName() + " summons a zombie to attack " + other.getName() + "!");
+                if (other.dodge()){
+                    System.out.println(other.getName() + " dodged the attack!");
+                } else{
+                    if (crit){
+                        System.out.println("Critical hit!");
+                    } System.out.println(other.getName() + " has lost " + atk + " health.");
+                    other.losehealth(atk);
+                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+                }
+            }
+        }
+    }
+    public void Skeleton(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int mana = this.getmana();
+            int str = this.getint()/2 + 6;
+            int atk = str + r.nextInt(str/4) - str/5;
+            if (this.losemana(20)){
+                if (this.isCrit()){
+                    atk = atk * 2;
+                    crit = true;
+                } System.out.println(this.getName() + " summons a skeleton to attack " + other.getName() + "!");
+                if (other.dodge()){
+                    System.out.println(other.getName() + " dodged the attack!");
+                } else{
+                    if (crit){
+                        System.out.println("Critical hit!");
+                    } System.out.println(other.getName() + " has lost " + atk + " health.");
+                    other.losehealth(atk);
+                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+                }
+            }
+        }
+    }
+    public void Reaper(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int mana = this.getmana();
+            int str = this.getint()/2 + 6;
+            int atk = str + r.nextInt(str/4) - str/6;
+            if (this.losemana(20)){
+                if (this.isCrit()){
+                    atk = atk * 2;
+                    crit = true;
+                } System.out.println(this.getName() + " summons a grim reaper to attack " + other.getName() + "!");
+                if (other.dodge()){
+                    System.out.println(other.getName() + " dodged the attack!");
+                } else{
+                    if (crit){
+                        System.out.println("Critical hit!");
+                    } System.out.println(other.getName() + " has lost " + atk + " health.");
+                    other.losehealth(atk);
+                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+                }
             }
         }
     }
