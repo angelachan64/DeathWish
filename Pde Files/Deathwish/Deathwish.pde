@@ -19,6 +19,14 @@ void keyPressed() {
       up = true;
     } if (keyCode == 40) {
       down = true;
+      time++;
+      if (time % 5 == 0 && bc.spnum < 4) {
+          bc.setspnum(bc.getspnum() + 1);
+      }
+      if (time == 20) {
+        time = 0;
+        bc.setspnum(0);
+      } 
     } if (keyCode == 39) {
       left = true;
     } if (keyCode == 37) {
@@ -45,16 +53,7 @@ void move() {
   if (up) {
     ycorCint = ycorCint + 10;
   } else if (down) {
-    bc.setspnum(0);
-    ycorCint = ycorCint - 1;
-    time++;
-    if (time % 5 == 0 && bc.spnum < 4) {
-        bc.setspnum(bc.getspnum() + 1);
-    }
-    if (time == 20) {
-      time = 0;
-      bc.setspnum(0);
-    } 
+    ycorCint = ycorCint - 5;
   } else if (left) {
     xcorCint = xcorCint - 10;
   } else if (right) {
