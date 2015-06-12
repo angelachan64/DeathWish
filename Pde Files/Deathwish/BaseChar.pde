@@ -5,7 +5,7 @@ class BaseChar{
     private int health, mana,maxhealth,maxmana;
     private int level,exp,maxexp;
     private int strength,intelligence,dexterity,defense,luck,charisma;
-    private int xpos, ypos, spnum;
+    private int xcor, ycor, spnum;
     private String name, spname;
     private boolean Mage,Thief,Warrior,Archer,Cleric;
     private PImage[] spritemoves = new PImage[16];
@@ -14,7 +14,7 @@ class BaseChar{
       health = 50; mana = 50; maxhealth = 50; maxmana = 50;
       level = 1; exp = 0; maxexp = 20;
       strength = 10; intelligence = 10; dexterity = 10; defense = 10;
-      luck = 10; charisma = 10; spname = "AverageM"; spnum = 0;
+      luck = 10; charisma = 10; spname = "AverageM"; spnum = 0; xcor = 285; ycor = 190; 
       for (int i = 0; i < 16; i++) {
         spritemoves[i] = loadImage(spname + (i + 1) + ".png");
        }
@@ -23,16 +23,16 @@ class BaseChar{
       health = 50; mana = 50; maxhealth = 50; maxmana = 50;
       level = 1; exp = 0; maxexp = 20;
       strength = 10; intelligence = 10; dexterity = 10; defense = 10;
-      luck = 10; charisma = 10; spname = "AverageM"; spnum = 0;
+      luck = 10; charisma = 10; spname = "AverageM"; spnum = 0; xcor = 285; ycor = 190;
       name = s;
       for (int i = 0; i < 16; i++) {
         spritemoves[i] = loadImage(spname + (i + 1) + ".png");
        }
     }
     
-    //Display Sprite
+    //Sprite Stuff
   void display() {
-   image(spritemoves[spnum], 300, 200);
+   image(spritemoves[spnum], xcor, ycor, (66*5/9), (101*5/9));
   }
   
   void setspnum(int n) {
@@ -41,6 +41,22 @@ class BaseChar{
   
   int getspnum() {
     return spnum;
+  }
+  
+  void setxcor(int n) {
+    xcor = n;
+  }
+  
+  int getxcor() {
+    return xcor;
+  }
+  
+  void setycor(int n) {
+    ycor = n;
+  }
+  
+  int getycor() {
+    return ycor;
   }
   
     //Name
