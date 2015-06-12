@@ -32,7 +32,7 @@ class BaseChar{
     
     //Display Sprite
   void display() {
-   image(spritemoves[spnum], 300, 200);
+   image(spritemoves[spnum], 265, 160);
   }
   
   void setspnum(int n) {
@@ -40,7 +40,8 @@ class BaseChar{
   }
   
   int getspnum() {
-    
+    return spnum;
+  }
   
     //Name
     public void setName(String s){

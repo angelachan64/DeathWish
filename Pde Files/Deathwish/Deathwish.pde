@@ -1,40 +1,28 @@
-square s;  // The PShape object
 PImage Cint;
 BaseChar bc;
 int xcorCint, ycorCint, time;
+boolean up, down, left, right;
 
 void setup() {
   size(600, 400, P2D);
-  // Creating the PShape as a square. The
-  // numeric arguments are similar to rect().
-  //s = new square(color(255,0,0),0,100);
   Cint = loadImage("CathedralInterior.jpg");
   xcorCint = -100;
   ycorCint = -100;
   bc = new BaseChar("Jason");
+  up = false; down = false; left = false; right = false; 
   time = 0;
-}
-
-void draw() {
-  image(Cint, xcorCint, ycorCint); 
-  bc.display();
 }
 
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == 38) {
-      ycorCint = ycorCint + 10;
+      up = true;
     } if (keyCode == 40) {
-      ycorCint = ycorCint - 10;
-      time++;
-      if (time = 10 && spnum < 4) {
-        bc.setspnum(bc.getspnum() + 1);
-    } 
-      if (time = 
+      down = true;
     } if (keyCode == 39) {
-      xcorCint = xcorCint - 10;
+      left = true;
     } if (keyCode == 37) {
-      xcorCint = xcorCint + 10;
+      right = true;
     }
   }
 }
@@ -42,16 +30,40 @@ void keyPressed() {
 void keyReleased() {
   if (key == CODED) {
     if (keyCode == 38) {
-      spnum = 0;
-      time = 0;
-    /*if (keyCode == 40) {
-      ;
+      up = false;
+    } if (keyCode == 40) {
+      down = false;
     } if (keyCode == 39) {
-      xcorCint = xcorCint - 10;
+      left = false;
     } if (keyCode == 37) {
-      xcorCint = xcorCint + 10;
+      right = false;
     }
-    */
   }
 }
-    
+
+void move() {
+  if (up) {
+    ycorCint = ycorCint + 10;
+  } else if (down) {
+    bc.setspnum(0);
+    ycorCint = ycorCint - 1;
+    time++;
+    if (time % 5 == 0 && bc.spnum < 4) {
+        bc.setspnum(bc.getspnum() + 1);
+    }
+    if (time == 20) {
+      time = 0;
+      bc.setspnum(0);
+    } 
+  } else if (left) {
+    xcorCint = xcorCint - 10;
+  } else if (right) {
+    xcorCint = xcorCint + 10;  
+  }
+}
+
+void draw() {
+  image(Cint, xcorCint, ycorCint); 
+  bc.display();
+  move();
+}

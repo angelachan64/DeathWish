@@ -1,4 +1,4 @@
-class square {
+/*class square {
   color c;
   float xpos;
   float ypos;
@@ -23,3 +23,4 @@ class square {
       }
   }
 }
+*/
