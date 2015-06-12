@@ -1,15 +1,21 @@
-PImage Cint;
+PImage Cint, Cext, Market;
 BaseChar bc;
-int xcorCint, ycorCint, time, prevkey;
+int xcorCint, ycorCint, xcorCext, ycorCext, time, prevkey;
 boolean up, down, left, right;
+boolean CintBool, CextBool, MarketBool;
 
 void setup() {
   size(600, 400, P2D);
   Cint = loadImage("Cathedral.PNG");
+  Cext = loadImage("ExtCathedral.PNG");
+  Market = loadImage("Market.PNG");
   xcorCint = -100;
   ycorCint = -100;
-  bc = new BaseChar("bJason");
+  xcorCext = -160;
+  ycorCext = -100;
+  bc = new BaseChar("Jason");
   up = false; down = false; left = false; right = false; 
+  CintBool = true; CextBool = false; MarketBool = false;
   time = 0;
 }
 
@@ -52,7 +58,7 @@ void move() {
     if (ycorCint >= 25 && bc.getycor() > 135) {
       bc.setycor(bc.getycor() - 5);
     }
-    if (ycorCint <= -400 && bc.getycor() <= 300) {
+    if (ycorCint <= -400 && bc.getycor() <= 280) {
       bc.setycor(bc.getycor() - 5);
     }
     //Animation
@@ -69,11 +75,16 @@ void move() {
       ycorCint = ycorCint - 5;
     } 
     //When the character moves
-    if (ycorCint <= -400 && bc.getycor() < 300) {
+    if (ycorCint <= -400 && bc.getycor() < 280) {
       bc.setycor(bc.getycor() + 5);
     }
     if (ycorCint >= 25 && bc.getycor() >= 135) {
       bc.setycor(bc.getycor() + 5);
+    }
+    //Exiting Cathedral
+    if (CintBool && bc.getycor() == 280 && (xcorCint > -135 || xcorCint < -55)) {
+      CintBool = false;
+      CextBool = true;
     }
     //Animation
     time++;
@@ -125,10 +136,14 @@ void move() {
 }
 
 void draw() {
-  image(Cint, xcorCint, ycorCint); 
+  if (CintBool) {
+    image(Cint, xcorCint, ycorCint);
+  } else if (CextBool) {
+    image(Cext, xcorCext, ycorCext);
+  }
   bc.display();
-  text("xcor: " + xcorCint + "\nycor: " + ycorCint, 500, 300);
-  //Change to Cathedral Exterior when -135 < xcor < -55 && ycor == -400
+  text("Background xcor: " + xcorCint + "\nBackground ycor: " + ycorCint, 400, 300);
+  text("Char xcor: " + bc.getxcor() + "\nChar ycor : " + bc.getycor(), 300, 300);
   fill(0, 102, 153);
   move();
 }
