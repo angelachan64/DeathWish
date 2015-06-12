@@ -1,6 +1,6 @@
 PImage Cint;
 BaseChar bc;
-int xcorCint, ycorCint, time;
+int xcorCint, ycorCint, time, prevkey;
 boolean up, down, left, right;
 
 void setup() {
@@ -8,7 +8,7 @@ void setup() {
   Cint = loadImage("CathedralInterior.jpg");
   xcorCint = -100;
   ycorCint = -100;
-  bc = new BaseChar("Jason");
+  bc = new BaseChar("booleanJason");
   up = false; down = false; left = false; right = false; 
   time = 0;
 }
@@ -51,13 +51,13 @@ void keyReleased() {
 
 void move() {
   if (up) {
-    ycorCint = ycorCint + 10;
+    ycorCint = ycorCint + 5;
   } else if (down) {
     ycorCint = ycorCint - 5;
   } else if (left) {
-    xcorCint = xcorCint - 10;
+    xcorCint = xcorCint - 5;
   } else if (right) {
-    xcorCint = xcorCint + 10;  
+    xcorCint = xcorCint + 5;  
   }
 }
 
