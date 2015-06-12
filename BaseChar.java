@@ -248,6 +248,10 @@ public class BaseChar{
             return true;
         } return false;
     }
+    public int defProtect(){
+        int p = this.getdef()/10;
+        return p;
+    }
     
     //Skills
     public void Lunge(BaseChar other){
@@ -269,7 +273,7 @@ public class BaseChar{
                 if (crit){
                     System.out.println("Critical hit!");
                 } System.out.println(other.getName() + " has lost " + atk + " health.");
-                other.losehealth(atk);
+                other.losehealth(atk - other.defProtect());
                 System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
             }
         }
@@ -294,7 +298,7 @@ public class BaseChar{
                     if (crit){
                         System.out.println("Critical hit!");
                     } System.out.println(other.getName() + " has lost " + atk + " health.");
-                    other.losehealth(atk);
+                    other.losehealth(atk - other.defProtect());
                     System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
                 }
             }
@@ -321,7 +325,7 @@ public class BaseChar{
                     if (crit){
                         System.out.println("Critical hit!");
                     } System.out.println(other.getName() + " has lost " + atk + " health.");
-                    other.losehealth(atk);
+                    other.losehealth(atk - other.defProtect());
                     System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
                 }
             }

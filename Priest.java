@@ -237,7 +237,7 @@ public class Priest extends Cleric{
     }
     
     //Skills
-    public void Zombie(BaseChar other){
+    public void Exorcism(BaseChar other){
         if (other.gethealth() == 0){
             //System.out.println(other.getName() + " is already dead!");
             return;
@@ -251,7 +251,7 @@ public class Priest extends Cleric{
                 if (this.isCrit()){
                     atk = atk * 2;
                     crit = true;
-                } System.out.println(this.getName() + " summons a zombie to attack " + other.getName() + "!");
+                } System.out.println(this.getName() + " performs an exorcism on " + other.getName() + "!");
                 if (other.dodge()){
                     System.out.println(other.getName() + " dodged the attack!");
                 } else{
@@ -264,7 +264,7 @@ public class Priest extends Cleric{
             }
         }
     }
-    public void Skeleton(BaseChar other){
+    public void (BaseChar other){
         if (other.gethealth() == 0){
             //System.out.println(other.getName() + " is already dead!");
             return;
