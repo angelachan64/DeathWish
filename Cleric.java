@@ -210,4 +210,73 @@ public class Cleric extends BaseChar{
     public int getchar(){
 	return charisma;
     }
+    
+    //Skills
+    public void LightBall(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int str = this.getint()/2;
+            int atk = str + r.nextInt(str/4) - str/3;
+            if (this.isCrit()){
+                atk = atk * 2;
+                crit = true;
+            } System.out.println(this.getName() + " shoots a ball of light at " + other.getName() + "!");
+            if (other.dodge()){
+                System.out.println(other.getName() + " dodged the attack!");
+            } else{
+                if (crit){
+                    System.out.println("Critical hit!");
+                } System.out.println(other.getName() + " has lost " + atk + " health.");
+                other.losehealth(atk);
+                System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+            }
+        }
+    }
+    public void Heal(BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int mana = this.getmana();
+            int str = this.getint()/2 + 2;
+            int atk = str + r.nextInt(str/4) - str/4;
+            if (this.losemana(10)){
+                System.out.println(this.getName() + " heals " + other.getName() + "!");
+                System.out.println(other.getName() + " has regained " + atk + "health.");
+            }
+        }
+    }
+    public void (BaseChar other){
+        if (other.gethealth() == 0){
+            //System.out.println(other.getName() + " is already dead!");
+            return;
+        } else{
+            Random r = new Random();
+            boolean crit = false;
+            int mana = this.getmana();
+            int str = this.getint()/2 + 4;
+            int atk = str + r.nextInt(str/4) - str/5;
+            if (this.losemana(15)){
+                if (this.isCrit()){
+                    atk = atk * 2;
+                    crit = true;
+                } System.out.println(this.getName() + " summons a tornado over " + other.getName() + "!");
+                if (other.dodge()){
+                    System.out.println(other.getName() + " dodged the attack!");
+                } else{
+                    if (crit){
+                        System.out.println("Critical hit!");
+                    } System.out.println(other.getName() + " has lost " + atk + " health.");
+                    other.losehealth(atk);
+                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
+                }
+            }
+        }
+    }
 }
