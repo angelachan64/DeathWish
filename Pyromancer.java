@@ -67,7 +67,14 @@ public class Pyromancer extends Mage{
             health -= n;
         }
     }
-
+    public void gainhealth(int n){
+        if (health+n >= maxhealth){
+            health = maxhealth;
+        } else{
+            health += n;
+        }
+    }
+    
     //MaxHealth
     public void setmaxhealth(int n){
 	maxhealth = n;

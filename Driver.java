@@ -22,12 +22,12 @@ public class Driver{
     //bc.Lunge(other);
     //bc.Lunge(other);
     //bc.Lunge(other);
-    bc = new Summoner(bc);
+    bc = new Cleric(bc);
     other = new BaseChar("Opponent");
     other = new Warrior(other);
     other.addexp(1000);
-    bc.Falcon(other);
-    bc.Bear(other);
-    bc.Dragon(other);
+    bc.LightBall(other);
+    bc.Heal(other);
+    bc.SuperHeal(other);
     }
 }

@@ -98,6 +98,13 @@ public class Summoner extends Mage{
             return true;
         }
     }
+    public void gainhealth(int n){
+        if (health+n >= maxhealth){
+            health = maxhealth;
+        } else{
+            health += n;
+        }
+    }
     
     
     //MaxMana

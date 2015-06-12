@@ -52,6 +52,13 @@ public class Cleric extends BaseChar{
             health -= n;
         }
     }
+    public void gainhealth(int n){
+        if (health+n >= maxhealth){
+            health = maxhealth;
+        } else{
+            health += n;
+        }
+    }
 
     //MaxHealth
     public void setmaxhealth(int n){
@@ -130,8 +137,11 @@ public class Cleric extends BaseChar{
 	    }
     }
     }
-    public String getexp(){
+    public String getexpS(){
 	return "" + exp + "/" + maxexp;
+    }
+    public int getexp(){
+        return exp;
     }
 
     //MaxExp
@@ -252,7 +262,7 @@ public class Cleric extends BaseChar{
             }
         }
     }
-    public void (BaseChar other){
+    public void SuperHeal(BaseChar other){
         if (other.gethealth() == 0){
             //System.out.println(other.getName() + " is already dead!");
             return;
@@ -261,21 +271,11 @@ public class Cleric extends BaseChar{
             boolean crit = false;
             int mana = this.getmana();
             int str = this.getint()/2 + 4;
-            int atk = str + r.nextInt(str/4) - str/5;
+            int atk = (str + r.nextInt(str/4) - str/5) * 7/3;
             if (this.losemana(15)){
-                if (this.isCrit()){
-                    atk = atk * 2;
-                    crit = true;
-                } System.out.println(this.getName() + " summons a tornado over " + other.getName() + "!");
-                if (other.dodge()){
-                    System.out.println(other.getName() + " dodged the attack!");
-                } else{
-                    if (crit){
-                        System.out.println("Critical hit!");
-                    } System.out.println(other.getName() + " has lost " + atk + " health.");
-                    other.losehealth(atk);
-                    System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
-                }
+                System.out.println(this.getName() + " heals " + other.getName() + "!");
+                other.addhealth(atk);
+                System.out.println(other.getName() + " has regained " + atk + " health.");
             }
         }
     }

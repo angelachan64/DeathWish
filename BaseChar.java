@@ -48,6 +48,13 @@ public class BaseChar{
             health -= n;
         }
     }
+    public void gainhealth(int n){
+        if (health+n >= maxhealth){
+            health = maxhealth;
+        } else{
+            health += n;
+        }
+    }
 
     //MaxHealth
     public void setmaxhealth(int n){
@@ -354,6 +361,15 @@ public class BaseChar{
         return;
     }
     public void Dragon(BaseChar other){
+        return;
+    }
+    public void LightBall(BaseChar other){
+        return;
+    }
+    public void Heal(BaseChar other){
+        return;
+    }
+    public void SuperHeal(BaseChar other){
         return;
     }
 }
