@@ -243,7 +243,7 @@ public class Cleric extends BaseChar{
                 if (crit){
                     System.out.println("Critical hit!");
                 } System.out.println(other.getName() + " has lost " + atk + " health.");
-                other.losehealth(atk);
+                other.losehealth(atk - other.defProtect());
                 System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
             }
         }
@@ -260,7 +260,7 @@ public class Cleric extends BaseChar{
             int atk = str + r.nextInt(str/4) - str/4;
             if (this.losemana(10)){
                 System.out.println(this.getName() + " heals " + other.getName() + "!");
-                System.out.println(other.getName() + " has regained " + atk + "health.");
+                System.out.println(other.getName() + " has regained " + atk + " health.");
             }
         }
     }
