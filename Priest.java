@@ -264,7 +264,7 @@ public class Priest extends Cleric{
             }
         }
     }
-    public void (BaseChar other){
+    public void Confession(BaseChar other){
         if (other.gethealth() == 0){
             //System.out.println(other.getName() + " is already dead!");
             return;
