@@ -262,7 +262,7 @@ public class Mage extends BaseChar{
                 if (crit){
                     System.out.println("Critical hit!");
                 } System.out.println(other.getName() + " has lost " + atk + " health.");
-                other.losehealth(atk);
+                other.losehealth(atk - other.defProtect());
                 System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
             }
         }
@@ -288,7 +288,7 @@ public class Mage extends BaseChar{
                     if (crit){
                         System.out.println("Critical hit!");
                     } System.out.println(other.getName() + " has lost " + atk + " health.");
-                    other.losehealth(atk);
+                    other.losehealth(atk - other.defProtect());
                     System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
                 }
             }
@@ -315,7 +315,7 @@ public class Mage extends BaseChar{
                     if (crit){
                         System.out.println("Critical hit!");
                     } System.out.println(other.getName() + " has lost " + atk + " health.");
-                    other.losehealth(atk);
+                    other.losehealth(atk - other.defProtect());
                     System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
                 }
             }
