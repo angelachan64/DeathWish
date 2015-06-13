@@ -22,8 +22,8 @@ void setup() {
   up = false; down = false; left = false; right = false; 
   CintBool = true; CextBool = false; MarketBool = false;
   time = 0;
-  currentX = 46; currentY = 38;
-  String[] map = loadStrings("CathedralCollision.txt");
+  currentX = 23; currentY = 38;
+  String[] map = loadStrings("CathedralCollision.dat");
   CintMap = new char[map[0].length()][map.length];
   maxX = map[0].length();
   maxY = map.length;
@@ -71,11 +71,11 @@ void keyReleased() {
 
 void move() {
   if (up) {
-    if (currentY >= 2) {
-      currentY = currentY - 1;
+    if (currentY > 0) { 
+        currentY = currentY - 1;
     }
-    System.out.println(CintMap[currentX][currentY - 1]);
-    if (CintMap[currentX][currentY - 1] == 'O' && bc.getycor() == 190) {
+    System.out.println(CintMap[currentX][currentY]);
+    if(CintMap[currentX][currentY] == 'O' && bc.getycor() == 190) {
       mapy = mapy + 5;
     }
     //When the map moves
@@ -85,7 +85,7 @@ void move() {
     } 
     */
     //When the character moves
-    if (CintMap[currentX][currentY - 1] == 'O' && (mapy >= 25 || mapy <= -400)) {
+    if (CintMap[currentX][currentY] == 'O' && (mapy >= 25 || mapy <= -400)) {
       bc.setycor(bc.getycor() - 5);
     }
     /*
@@ -105,11 +105,11 @@ void move() {
     } 
   } else if (down) {
     //When the map moves
-    if (currentY <= maxY - 3) {
+    if (currentY < maxY - 1) {
       currentY = currentY + 1;
     }
-    System.out.println(CintMap[currentX][currentY + 1]);
-    if (CintMap[currentX][currentY + 1] == 'O' && bc.getycor() == 190) {
+    System.out.println(CintMap[currentX][currentY]);
+    if (CintMap[currentX][currentY] == 'O' && bc.getycor() == 190) {
       mapy = mapy - 5;
     }
     /*
@@ -118,7 +118,7 @@ void move() {
     }
     */
     //When the character moves
-    if (CintMap[currentX][currentY + 1] == 'O' && (mapy <= -400 || mapy >= 25)) {
+    if (CintMap[currentX][currentY] == 'O' && (mapy <= -400 || mapy >= 25)) {
       bc.setycor(bc.getycor() + 5);
     }
     
