@@ -22,12 +22,15 @@ public class Driver{
     //bc.Lunge(other);
     //bc.Lunge(other);
     //bc.Lunge(other);
-    bc = new Cleric(bc);
+    bc = new Priest(bc);
     other = new BaseChar("Opponent");
     other = new Warrior(other);
     other.addexp(1000);
     bc.LightBall(other);
     bc.Heal(other);
     bc.SuperHeal(other);
+    bc.Exorcism(other);
+    bc.Confession(other);
+    bc.Blessing(other);
     }
 }

@@ -281,4 +281,13 @@ public class Cleric extends BaseChar{
             }
         }
     }
+    public void Exorcism(BaseChar other){
+        return;
+    }
+    public void Confession(BaseChar other){
+        return;
+    }
+    public void Blessing(BaseChar other){
+        return;
+    }
 }

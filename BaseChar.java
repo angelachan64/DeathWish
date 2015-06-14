@@ -32,13 +32,10 @@ public class BaseChar{
 
     //Health
     public void sethealth(int n){
-	health = n;
-    }
-    public void addhealth(int n){
-	health = health + n;
+	this.health = n;
     }
     public int gethealth(){
-	return health;
+	return this.health;
     }
     public void losehealth(int n){
         if (health-n <= 0){
@@ -60,9 +57,7 @@ public class BaseChar{
     public void setmaxhealth(int n){
 	maxhealth = n;
     }
-    public void addmaxhealth(int n){
-	health = health + n;
-    }
+
     public int getmaxhealth(){
 	return maxhealth;
     }
@@ -71,9 +66,7 @@ public class BaseChar{
     public void setmana(int n){
 	mana = n;
     }
-    public void addmana(int n){
-	mana = mana + n;
-    }
+
     public int getmana(){
 	return mana;
     }
@@ -91,47 +84,58 @@ public class BaseChar{
     public void setmaxmana(int n){
 	maxmana = n;
     }
-    public void addmaxmana(int n){
-	maxmana = maxmana + n;
-    }
+
     public int getmaxmana(){
 	return maxmana;
     }
 
     //Level
-    public void setuplevel(int n){
-	level = 1;
+    public void setlevel(int n){
+	level = n;
     }
     public int getlevel(){
 	return level;
     }
 
     //Exp
-    public void setupexp(){
-	exp = 0;
+    /*public void setexp(int n){
+        exp = n
+	    while(exp > maxexp){
+	        setexp(exp - n);
+	        setlevel
+	    }
+    }*/
+    public void setmaxexp(int n){
+        maxexp = n;
     }
+    
     public void addexp(int n){
 	if (exp + n < maxexp){
 	    exp += n;
 	} else{
-	    exp = n;
-	    while (exp > maxexp){
-	        exp = exp - maxexp;
+	    exp += n;
+	    while (exp >= maxexp){
+            exp = exp - maxexp;
 	        level++;
 	        maxexp = maxexp + maxexp/4;
-	        maxhealth += maxhealth/4;
-	        health = maxhealth;
-	        maxmana += maxmana/4;
-	        mana = maxmana;
-	        strength += 2;
-	        intelligence += 2;
-	        dexterity += 2;
-	        defense += 2;
-	        luck += 2;
-	        charisma += 2;
+	        this.statchange();
 	    }
     }
     }
+    
+    public void statchange(){
+        setmaxhealth(maxhealth + maxhealth/4);
+        sethealth(maxhealth);
+        setmaxmana(maxmana + maxmana/4);
+        setmana(maxmana);
+        setstrength(strength + 2);
+        setint(intelligence + 2);
+        setdex(dexterity + 2);
+        setdef(defense + 2);
+        setluck(luck + 2);
+        setchar(charisma + 2);
+    }
+    
     public String getexpS(){
 	return ""+exp + "/" + maxexp;
     }
@@ -143,9 +147,6 @@ public class BaseChar{
     public void setupmaxexp(int n){
 	maxexp = n;
     }
-    public void addmaxexp(int n){
-	maxexp += n;
-    }
     public int getmaxexp(){
 	return maxexp;
     }
@@ -153,9 +154,6 @@ public class BaseChar{
     //Strength
     public void setstrength(int n){
 	strength = n;
-    }
-    public void addstrength(int n){
-	strength = strength + n;
     }
     public int getstrength(){
 	return strength;
@@ -165,9 +163,6 @@ public class BaseChar{
     public void setint(int n){
 	intelligence = n;
     }
-    public void addint(int n){
-	intelligence = intelligence + n;
-    }
     public int getint(){
 	return intelligence;
     }
@@ -175,9 +170,6 @@ public class BaseChar{
     //Dexterity
     public void setdex(int n){
 	dexterity = n;
-    }
-    public void adddex(int n){
-	dexterity = dexterity + n;
     }
     public int getdex(){
 	return dexterity;
@@ -187,19 +179,16 @@ public class BaseChar{
     public void setdef(int n){
 	defense = n;
     }
-    public void adddef(int n){
-	defense = defense + n;
-    }
     public int getdef(){
 	return defense;
+    }
+    public void lowerDef(int n){
+        setdef(getdef() - n);
     }
 
     //Luck
     public void setluck(int n){
 	luck = n;
-    }
-    public void addluck(int n){
-	luck = luck + n;
     }
     public int getluck(){
 	return luck;
@@ -208,9 +197,6 @@ public class BaseChar{
     //Charisma
     public void setchar(int n){
 	charisma = n;
-    }
-    public void addchar(int n){
-	charisma = charisma + n;
     }
     public int getchar(){
 	return charisma;
@@ -374,6 +360,15 @@ public class BaseChar{
         return;
     }
     public void SuperHeal(BaseChar other){
+        return;
+    }
+    public void Exorcism(BaseChar other){
+        return;
+    }
+    public void Confession(BaseChar other){
+        return;
+    }
+    public void Blessing(BaseChar other){
         return;
     }
 }

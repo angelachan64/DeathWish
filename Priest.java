@@ -9,7 +9,7 @@ public class Priest extends Cleric{
     private boolean Mage=false,Thief=false,Warrior=false;
     private boolean Archer=false,Cleric=true;
     
-    public Necromancer(){
+    public Priest(){
 	health = 40; mana = 75; maxhealth = 40; maxmana = 75;
 	level = 1; exp = 0; maxexp = 20;
 	strength = 8; intelligence = 15; dexterity = 10; defense = 7;
@@ -213,6 +213,9 @@ public class Priest extends Cleric{
     public int getdef(){
 	return defense;
     }
+    public int lowerDef(int n){
+        setdef(getdef() - n);
+    }
 
     //Luck
     public void setluck(int n){
@@ -272,31 +275,29 @@ public class Priest extends Cleric{
             Random r = new Random();
             boolean crit = false;
             int mana = this.getmana();
-            int str = this.getint()/2 + 6;
-            int atk = str + r.nextInt(str/4) - str/5;
+            int str = this.getint()/20 + 1;
+            int atk = str + r.nextInt(this.getint()/10);
             if (this.losemana(20)){
                 if (this.isCrit()){
                     atk = atk * 2;
                     crit = true;
-                } System.out.println(this.getName() + " summons a skeleton to attack " + other.getName() + "!");
+                } System.out.println(this.getName() + " brings " + other.getName() + " to confess their sins!");
                 if (other.dodge()){
                     System.out.println(other.getName() + " dodged the attack!");
                 } else{
-                    if (crit){
-                        System.out.println("Critical hit!");
-                    } System.out.println(other.getName() + " has lost " + atk + " health.");
-                    other.losehealth(atk);
+                     System.out.println(other.getName() + " has lost " + atk + " defense.");
+                    other.lowerDef(atk);
                     System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
                 }
             }
         }
     }
-    public void Reaper(BaseChar other){
+    public void Blessing(BaseChar other){
         if (other.gethealth() == 0){
             //System.out.println(other.getName() + " is already dead!");
             return;
         } else{
-            Random r = new Random();
+            /*Random r = new Random();
             boolean crit = false;
             int mana = this.getmana();
             int str = this.getint()/2 + 6;
@@ -315,7 +316,9 @@ public class Priest extends Cleric{
                     other.losehealth(atk);
                     System.out.println(other.getName() + " now has " + other.gethealth() + " HP.");
                 }
-            }
+            }*/
+            //to be implemented later
+            System.out.println(other.getName() + " has gained 5 attack for 3 turns.");
         }
     }
 }

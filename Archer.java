@@ -1,29 +1,31 @@
 public class Archer extends BaseChar{
-    private int health, mana,maxhealth,maxmana;
-    private int level,exp,maxexp;
-    private int strength,intelligence,dexterity,defense,luck,charisma;
-    private String name;
-    private boolean Mage=false,Thief=false,Warrior=false;
-    private boolean Archer=true,Cleric=false;
+    
     
     public Archer(){
-	health = 50; mana = 50; maxhealth = 50; maxmana = 50;
-	level = 1; exp = 0; maxexp = 20;
-	strength = 10; intelligence = 10; dexterity = 10; defense = 10;
-	luck = 10; charisma = 10;
+    	this.setmaxhealth(getmaxhealth() + 10);
+    	this.sethealth(getmaxhealth());
+    	this.setmaxmana(getmaxmana() + 25);
+    	//strength = bc.getstrength();
+    	//intelligence = bc.getint();
+        this.setdex(getdex() + 25);
+    	//defense = bc.getdef();
+        this.setluck(getluck() + 10);
+    	//charisma = bc.getchar(); 
     }
-    public Archer(BaseChar bc){
-        name = bc.getName();
-    	health = bc.gethealth() + 10;
-    	mana = bc.getmana() + 25;
-    	strength = bc.getstrength();
-    	intelligence = bc.getint();
-    	dexterity = bc.getdex() + 25;
-    	defense = bc.getdef();
-    	luck = bc.getluck() + 10;
-    	charisma = bc.getchar(); 
+    
+    public void statchange(){
+	    this.setmaxhealth(getmaxhealth() + getmaxhealth()/4);
+	    this.sethealth(getmaxhealth());
+	    this.setmaxmana(getmaxmana() + getmaxmana()/3);
+	    this.setmana(getmaxmana());
+        this.setstrength(getstrength() + 2);
+        this.setint(getint() + 2);
+        this.setdex(getdex() + 4);
+        this.setdef(getdef() + 2);
+        this.setluck(getluck() + 3);
+        this.setchar(getchar() + 2);
     }
-    //Name
+    /*//Name
     public void setName(String s){
 	name = s;
     }
@@ -206,5 +208,5 @@ public class Archer extends BaseChar{
     }
     public int getchar(){
 	return charisma;
-    }
+    }*/
 }
