@@ -28,8 +28,8 @@ void setup() {
   ycorCext = -190;
   xcorMarket = -80;
   ycorMarket = 0;
-  xcorIntersection = -100;
-  ycorIntersection = -100;
+  xcorIntersection = 0;
+  ycorIntersection = 0;
   mapx = xcorCint;
   mapy = ycorCint;
   mapxMIN = -350;
@@ -198,16 +198,16 @@ void move() {
       loadCollisions("MarketCollision.dat");
       currentX = maxX/2; currentY = 3;
     }
-    if (CextBool && bc.getycor() == 310 && mapx > -130 && mapx < -35) {
+    if (MarketBool && bc.getycor() == 310 && mapx > -130 && mapx < -35) {
       MarketBool = false;
       IntersectionBool = true;
       bc.setxcor(285);
       bc.setycor(15);
       mapx = xcorIntersection;
       mapy = ycorIntersection;
-      mapxMIN = -200;
-      mapxMAX = -5;
-      mapyMIN = -400;
+      mapxMIN = -25;
+      mapxMAX = 0;
+      mapyMIN = -70;
       mapyMAX = 0;
       loadCollisions("IntersectionCollision.dat");
       currentX = maxX/2; currentY = 3;
@@ -307,6 +307,8 @@ void draw() {
     image(Cext, mapx, mapy);
   } else if (MarketBool) {
     image(Market, mapx, mapy);
+  } else if (IntersectionBool) {
+    image(Intersection, mapx, mapy);
   }
   bc.display();
   text("Background xcor: " + mapx + "\nBackground ycor: " + mapy, 400, 300);
