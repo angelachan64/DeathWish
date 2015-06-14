@@ -1,10 +1,10 @@
 PImage Cint, Cext, Market;
 BaseChar bc;
 int xcorCint, ycorCint, xcorCext, ycorCext, time, prevkey;
-int mapx, mapy, maxX, maxY;
+int mapx, mapy, maxX, maxY, mapyMIN, mapyMAX, mapxMIN, mapxMAX;
 boolean up, down, left, right;
 boolean CintBool, CextBool, MarketBool;
-char[][] CintMap;
+char[][] collisionMap;
 int currentX, currentY;
 
 void setup() {
@@ -15,25 +15,38 @@ void setup() {
   xcorCint = -100;
   ycorCint = -100;
   xcorCext = -160;
-  ycorCext = -150;
+  ycorCext = -190;
   mapx = xcorCint;
   mapy = ycorCint;
+  mapxMIN = -350;
+  mapxMAX = 100;
+  mapyMIN = -400;
+  mapyMAX = 25;
+  
+  collisionMap = new char[10][10];
   bc = new BaseChar("Jason");
   up = false; down = false; left = false; right = false; 
   CintBool = true; CextBool = false; MarketBool = false;
   time = 0;
-  currentX = 23; currentY = 38;
-  String[] map = loadStrings("CathedralCollision.dat");
-  CintMap = new char[map[0].length()][map.length];
+  loadCollisions("CathedralCollision.dat");
+}
+
+void loadCollisions(String file) {  
+  String[] map = loadStrings(file);
+  collisionMap = new char[map[0].length()][map.length];
   maxX = map[0].length();
   maxY = map.length;
   for (int r = 0; r < map.length; r++) {
     String s = map[r];
     for (int c = 0; c < s.length(); c++) {
-      CintMap[c][r] = s.charAt(c);
+      collisionMap[c][r] = s.charAt(c);
     }
   }
-  
+  if (CintBool) {
+    currentX = map[0].length()/2; currentY = 38;
+  } else if (CextBool) {
+    currentX = map[0].length()/2; currentY = 76;
+  }
 }
 
 void keyPressed() {
@@ -54,16 +67,16 @@ void keyReleased() {
   if (key == CODED) {
     if (keyCode == 38) {
       up = false;
-      bc.setspnum(12);
+      //bc.setspnum(12);
     } if (keyCode == 40) {
       down = false;
-      bc.setspnum(0);
+      //bc.setspnum(0);
     } if (keyCode == 39) {
       right = false;
-      bc.setspnum(8);
+      //bc.setspnum(8);
     } if (keyCode == 37) {
       left = false;
-      bc.setspnum(4);
+      //bc.setspnum(4);
     }
     //time = 0;
   }
@@ -71,11 +84,11 @@ void keyReleased() {
 
 void move() {
   if (up) {
-    if (currentY > 0) { 
+    if (currentY > 1 && collisionMap[currentX][currentY - 1] == 'O') { 
         currentY = currentY - 1;
     }
-    System.out.println(CintMap[currentX][currentY]);
-    if(CintMap[currentX][currentY] == 'O' && bc.getycor() == 190) {
+    System.out.println(collisionMap[currentX][currentY - 1]);
+    if(collisionMap[currentX][currentY - 1] == 'O' && bc.getycor() == 190) {
       mapy = mapy + 5;
     }
     //When the map moves
@@ -85,7 +98,7 @@ void move() {
     } 
     */
     //When the character moves
-    if (CintMap[currentX][currentY] == 'O' && (mapy >= 25 || mapy <= -400)) {
+    if (collisionMap[currentX][currentY - 1] == 'O' && (mapy >= mapyMAX || mapy <= mapyMIN)) {
       bc.setycor(bc.getycor() - 5);
     }
     /*
@@ -105,11 +118,11 @@ void move() {
     } 
   } else if (down) {
     //When the map moves
-    if (currentY < maxY - 1) {
+    if (currentY < maxY - 2 && collisionMap[currentX][currentY + 1] == 'O') {
       currentY = currentY + 1;
     }
-    System.out.println(CintMap[currentX][currentY]);
-    if (CintMap[currentX][currentY] == 'O' && bc.getycor() == 190) {
+    System.out.println(collisionMap[currentX][currentY + 1]);
+    if (collisionMap[currentX][currentY + 1] == 'O' && bc.getycor() == 190) {
       mapy = mapy - 5;
     }
     /*
@@ -118,10 +131,9 @@ void move() {
     }
     */
     //When the character moves
-    if (CintMap[currentX][currentY] == 'O' && (mapy <= -400 || mapy >= 25)) {
+    if (collisionMap[currentX][currentY + 1] == 'O' && (mapy <= mapyMIN || mapy >= mapyMAX)) {
       bc.setycor(bc.getycor() + 5);
     }
-    
     /*
     if (mapy <= -400 && bc.getycor() < 280) {
       bc.setycor(bc.getycor() + 5);
@@ -138,6 +150,11 @@ void move() {
       bc.setycor(190);
       mapx = xcorCext;
       mapy = ycorCext;
+      mapxMIN = -360;
+      mapxMAX = -5;
+      mapyMIN = -225;
+      mapyMAX = -5;
+      loadCollisions("CathedralExtCollision.dat");
     }
     //Animation
     time++;
@@ -147,16 +164,30 @@ void move() {
       bc.setspnum(0);
     } 
   } else if (left) {
+    if (currentX > 1 && collisionMap[currentX - 1][currentY] == 'O') { 
+        currentX = currentX - 1;
+    }
     //When the map moves
+    System.out.println(collisionMap[currentX - 1][currentY]);
+    if (collisionMap[currentX - 1][currentY] == 'O' && bc.getxcor() == 285) {
+      mapx = mapx + 5;
+    }
+    /*
     if (mapx < 100 && bc.getxcor() == 285) {
       mapx = mapx + 5;
     }
+    */
     //When the character moves
+    if (collisionMap[currentX - 1][currentY] == 'O' && (mapx >= mapxMAX || mapx <= mapxMIN)) {
+      bc.setxcor(bc.getxcor() - 5);
+    }
+    /*
     if (mapx >= 100 && bc.getxcor() > 160) {
       bc.setxcor(bc.getxcor() - 5);
     } if (mapx <= -300 && bc.getxcor() <= 410) {
       bc.setxcor(bc.getxcor() - 5);
     }
+    */
     //Animation 
     time++;
     if (time % 8 == 0 && bc.spnum >= 4 && bc.spnum < 8) {
@@ -165,16 +196,30 @@ void move() {
       bc.setspnum(4);
     } 
   } else if (right) {
+    if (currentX < maxX - 2 && collisionMap[currentX + 1][currentY] == 'O') { 
+        currentX = currentX + 1;
+    }
     //When the map moves
+    System.out.println(collisionMap[currentX + 1][currentY]);
+    if (collisionMap[currentX + 1][currentY] == 'O' && bc.getxcor() == 285) {
+      mapx = mapx - 5;
+    }
+    /*
     if (mapx > -300 && bc.getxcor() == 285) {
       mapx = mapx - 5;  
     } 
+    */
     //When the character moves
+    if (collisionMap[currentX + 1][currentY] == 'O' && (mapx >= mapxMAX || mapx <= mapxMIN)) {
+      bc.setxcor(bc.getxcor() + 5);
+    }
+    /*
     if (mapx <= -300 && bc.getxcor() < 410) {
       bc.setxcor(bc.getxcor() + 5);
     } if (mapx >= 100 && bc.getxcor() >= 160) {
       bc.setxcor(bc.getxcor() + 5);
     }
+    */
     //Animation
     time++;
     if (time % 8 == 0 && bc.spnum >= 8 && bc.spnum < 12) {
@@ -195,7 +240,7 @@ void draw() {
   text("Background xcor: " + mapx + "\nBackground ycor: " + mapy, 400, 300);
   text("Char xcor: " + bc.getxcor() + "\nChar ycor : " + bc.getycor(), 300, 300);
   text("cX, xY: " + currentX + ", " + currentY, 100, 300);
-  text("Collision cor: " + CintMap[currentX][currentY], 200, 300);
+  text("Collision cor: " + collisionMap[currentX][currentY], 200, 300);
   fill(0, 102, 153);
   move();
 }
