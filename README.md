@@ -15,6 +15,7 @@ Z key to advance text or talk to people (Press w in the cathedral)
 
 Java files we tested on are in /Deathwish/ folder
 
+Note: Laptop died, will redo lost code by tonight
 ___
 #Credits to:
 Images created by Angela Chan using:
