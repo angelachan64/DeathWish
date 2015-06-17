@@ -1,13 +1,17 @@
 PImage Cint, Cext, Market, Intersection, Trainext, Trainint, Castleext, Castleint;
 PImage RoyalHall, CastUp1, CastUp2, CastDungeon, Residint, Residext;
+PImage AngelMira;
 BaseChar bc;
 int xcorCint, ycorCint, xcorCext, ycorCext, xcorMarket, ycorMarket, xcorIntersection, ycorIntersection;
 int xcorTrainext, ycorTrainext;
 int time, prevkey;
 int mapx, mapy, maxX, maxY, mapyMIN, mapyMAX, mapxMIN, mapxMAX;
+int talkIndex;
 boolean up, down, left, right;
 boolean CintBool, CextBool, MarketBool, IntersectionBool, TrainextBool, TrainintBool;
 boolean CastleextBool, Cast1Bool, Cast2Bool, Cast3Bool;
+boolean AngelTalkBool;
+String[] AngelTalk;
 char[][] collisionMap;
 int currentX, currentY;
 
@@ -26,6 +30,7 @@ void setup() {
   CastDungeon = loadImage("CastleDungeon.PNG");
   Residint = loadImage("IntHouse.PNG");
   Residext = loadImage("Residential.PNG");
+  AngelMira = loadImage("AngelMira.PNG");
   xcorCint = -100;
   ycorCint = -100;
   xcorCext = -160;
@@ -47,6 +52,9 @@ void setup() {
   up = false; down = false; left = false; right = false; 
   CintBool = true; CextBool = false; MarketBool = false;
   time = 0;
+  AngelTalkBool = false;
+  talkIndex = 0;
+  AngelTalk = loadStrings("AngelTalk.dat");
   loadCollisions("CathedralCollision.dat");
   currentX = maxX/2; currentY = 38;
 }
@@ -74,6 +82,13 @@ void keyPressed() {
       right = true;
     } if (keyCode == 37) {
       left = true;
+    }
+  }
+  if (CintBool && key == 'z' || key == 'Z') {
+    if (AngelTalkBool == false) {
+      AngelTalkBool = true;
+    } else if (talkIndex < AngelTalk.length - 1) {
+       talkIndex = talkIndex + 1; 
     }
   }
 }
@@ -244,11 +259,20 @@ void draw() {
   } else if (TrainintBool) {
     image(Trainint, mapx, mapy);
   }
+  if (AngelTalkBool && talkIndex != AngelTalk.length - 1) {
+    image(AngelMira, 273, 115);
+  }
   bc.display();
+  if (AngelTalkBool) {
+    textSize(18);
+    text(AngelTalk[talkIndex], 5, 100);
+  }
+  /*
   text("Background xcor: " + mapx + "\nBackground ycor: " + mapy, 400, 300);
   text("Char xcor: " + bc.getxcor() + "\nChar ycor : " + bc.getycor(), 300, 300);
   text("cX, xY: " + currentX + ", " + currentY, 100, 300);
   text("Collision cor: " + collisionMap[currentX][currentY], 200, 300);
-  fill(0, 102, 153);
+  //fill(0, 102, 153);
+  */
   move();
 }
