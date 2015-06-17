@@ -9,7 +9,12 @@ above your angel peers.
 ___
 #Directions:
 
-(TO BE EDITED BY JASON SHIN)
+Run /DeathWish/Pde\ Files/Deathwish/Deathwish.pde
+Arrow Keys to move around
+Z key to advance text or talk to people (Press w in the cathedral)
+
+Java files we tested on are in /Deathwish/ folder
+
 ___
 #Credits to:
 Images created by Angela Chan using:
