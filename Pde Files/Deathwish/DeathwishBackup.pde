@@ -1,17 +1,13 @@
+/*
 PImage Cint, Cext, Market, Intersection, Trainext, Trainint, Castleext, Castleint;
 PImage RoyalHall, CastUp1, CastUp2, CastDungeon, Residint, Residext;
-PImage AngelMira;
 BaseChar bc;
-int xcorCint, ycorCint, xcorCext, ycorCext, xcorMarket, ycorMarket, xcorIntersection, ycorIntersection;
-int xcorTrainext, ycorTrainext;
+int xcorCint, ycorCint, xcorCext, ycorCext, xcorMarket, ycorMarket, xcorIntersection, ycorIntersection; 
 int time, prevkey;
 int mapx, mapy, maxX, maxY, mapyMIN, mapyMAX, mapxMIN, mapxMAX;
-int talkIndex;
 boolean up, down, left, right;
 boolean CintBool, CextBool, MarketBool, IntersectionBool, TrainextBool, TrainintBool;
 boolean CastleextBool, Cast1Bool, Cast2Bool, Cast3Bool;
-boolean AngelTalkBool;
-String[] AngelTalk;
 char[][] collisionMap;
 int currentX, currentY;
 
@@ -30,7 +26,6 @@ void setup() {
   CastDungeon = loadImage("CastleDungeon.PNG");
   Residint = loadImage("IntHouse.PNG");
   Residext = loadImage("Residential.PNG");
-  AngelMira = loadImage("AngelMira.PNG");
   xcorCint = -100;
   ycorCint = -100;
   xcorCext = -160;
@@ -39,8 +34,6 @@ void setup() {
   ycorMarket = 0;
   xcorIntersection = 0;
   ycorIntersection = 0;
-  xcorTrainext = 0;
-  ycorTrainext = -220;
   mapx = xcorCint;
   mapy = ycorCint;
   mapxMIN = -350;
@@ -52,9 +45,6 @@ void setup() {
   up = false; down = false; left = false; right = false; 
   CintBool = true; CextBool = false; MarketBool = false;
   time = 0;
-  AngelTalkBool = false;
-  talkIndex = 0;
-  AngelTalk = loadStrings("AngelTalk.dat");
   loadCollisions("CathedralCollision.dat");
   currentX = maxX/2; currentY = 38;
 }
@@ -82,13 +72,6 @@ void keyPressed() {
       right = true;
     } if (keyCode == 37) {
       left = true;
-    }
-  }
-  if (CintBool && key == 'z' || key == 'Z') {
-    if (AngelTalkBool == false) {
-      AngelTalkBool = true;
-    } else if (talkIndex < AngelTalk.length - 1) {
-       talkIndex = talkIndex + 1; 
     }
   }
 }
@@ -123,6 +106,32 @@ void move() {
         }
     }
     System.out.println(collisionMap[currentX][currentY]);
+    /*
+    if(collisionMap[currentX][currentY - 1] == 'O' && bc.getycor() == 190) {
+      mapy = mapy + 5;
+    }
+    */
+    //When the map moves
+    /*
+    if (mapy < 25 && bc.getycor() == 190) {
+      mapy = mapy + 5;      
+    } 
+    */
+    //When the character moves
+    /*
+    if (collisionMap[currentX][currentY] == 'O' && (mapy >= mapyMAX || mapy <= mapyMIN)) {
+      bc.setycor(bc.getycor() - 5);
+    }
+    /*
+    if (mapy >= 25 && bc.getycor() > 135) {
+      bc.setycor(bc.getycor() - 5);
+    }
+    if (mapy <= -400 && bc.getycor() <= 280) {
+      bc.setycor(bc.getycor() - 5);
+    }
+    */
+    
+/*  
     //Animation
     time++;
     if (time % 8 == 0 && bc.spnum >= 12 && bc.spnum < 16) {
@@ -130,7 +139,7 @@ void move() {
     } if (time % 32 == 0) {
       bc.setspnum(12);
     } 
-  } else if (down) {
+  }else if (down) {
     //When the map moves
     if (currentY < maxY - 1 && collisionMap[currentX][currentY + 1] == 'O') {
       currentY = currentY + 1;
@@ -141,8 +150,30 @@ void move() {
       }
     }
     System.out.println(collisionMap[currentX][currentY]);
+    /*
+    if (collisionMap[currentX][currentY] == 'O' && bc.getycor() == 190) {
+      mapy = mapy - 5;
+    }
+    /*
+    if (mapy > -400 && bc.getycor() == 190) {
+      mapy = mapy - 5;
+    }
+    */
+    //When the character moves
+    /*
+    if (collisionMap[currentX][currentY] == 'O' && (mapy <= mapyMIN || mapy >= mapyMAX)) {
+      bc.setycor(bc.getycor() + 5);
+    }
+    /*
+    if (mapy <= -400 && bc.getycor() < 280) {
+      bc.setycor(bc.getycor() + 5);
+    }
+    if (mapy >= 25 && bc.getycor() >= 135) {
+      bc.setycor(bc.getycor() + 5);
+    }
+    */
     //Exiting Cathedral
-    if (CintBool && bc.getycor() == 285 && mapx > -135 && mapx < -55) {
+/*    if (CintBool && bc.getycor() == 285 && mapx > -135 && mapx < -55) {
       CintBool = false;
       CextBool = true;
       bc.setxcor(285);
@@ -156,7 +187,7 @@ void move() {
       loadCollisions("CathedralExtCollision.dat");
       currentX = maxX/2; currentY = 76;
     }
-    //Entering Market
+    //Exiting Cathedral Ext
     if (CextBool && bc.getycor() == 310 && mapx > -200 && mapx < -130) {
       CextBool = false;
       MarketBool = true;
@@ -171,7 +202,6 @@ void move() {
       loadCollisions("MarketCollision.dat");
       currentX = maxX/2; currentY = 3;
     }
-    //Entering Intersection
     if (MarketBool && bc.getycor() == 310 && mapx > -130 && mapx < -35) {
       MarketBool = false;
       IntersectionBool = true;
@@ -202,9 +232,31 @@ void move() {
         bc.setxcor(bc.getxcor() - 5);
       }
     }
+    //When the map moves
     System.out.println(collisionMap[currentX][currentY]);
+    /*
+    if (collisionMap[currentX - 1][currentY] == 'O' && bc.getxcor() == 285) {
+      mapx = mapx + 5;
+    }
+    /*
+    if (mapx < 100 && bc.getxcor() == 285) {
+      mapx = mapx + 5;
+    }
+    */
+    //When the character moves
+    /*
+    if (collisionMap[currentX - 1][currentY] == 'O' && (mapx >= mapxMAX || mapx <= mapxMIN)) {
+      bc.setxcor(bc.getxcor() - 5);
+    }
+    /*
+    if (mapx >= 100 && bc.getxcor() > 160) {
+      bc.setxcor(bc.getxcor() - 5);
+    } if (mapx <= -300 && bc.getxcor() <= 410) {
+      bc.setxcor(bc.getxcor() - 5);
+    }
+    */
     //Animation 
-    time++;
+/*    time++;
     if (time % 8 == 0 && bc.spnum >= 4 && bc.spnum < 8) {
         bc.setspnum(bc.getspnum() + 1);
     } if (time % 32 == 0) {
@@ -219,24 +271,31 @@ void move() {
         bc.setxcor(bc.getxcor() + 5);
       }
     }
+    //When the map moves
     System.out.println(collisionMap[currentX][currentY]);
-    //Entering Training
-    if (IntersectionBool && bc.getxcor() >= 550 && bc.getycor() >= 130 && bc.getycor() <= 190) {
-      IntersectionBool = false;
-      TrainextBool = true;
-      bc.setxcor(15);
-      bc.setycor(190);
-      mapx = xcorTrainext;
-      mapy = ycorTrainext;
-      mapxMIN = -400;
-      mapxMAX = 0;
-      mapyMIN = -300;
-      mapyMAX = -5;
-      loadCollisions("IntersectionCollision.dat");
-      currentX = 1; currentY = maxY - 5;
+    /*
+    if (collisionMap[currentX + 1][currentY] == 'O' && bc.getxcor() == 285) {
+      mapx = mapx - 5;
     }
+    /*
+    if (mapx > -300 && bc.getxcor() == 285) {
+      mapx = mapx - 5;  
+    } 
+    */
+    //When the character moves
+    /*
+    if (collisionMap[currentX + 1][currentY] == 'O' && (mapx >= mapxMAX || mapx <= mapxMIN)) {
+      bc.setxcor(bc.getxcor() + 5);
+    }
+    /*
+    if (mapx <= -300 && bc.getxcor() < 410) {
+      bc.setxcor(bc.getxcor() + 5);
+    } if (mapx >= 100 && bc.getxcor() >= 160) {
+      bc.setxcor(bc.getxcor() + 5);
+    }
+    */
     //Animation
-    time++;
+/*    time++;
     if (time % 8 == 0 && bc.spnum >= 8 && bc.spnum < 12) {
         bc.setspnum(bc.getspnum() + 1);
     } if (time % 32 == 0) {
@@ -254,25 +313,13 @@ void draw() {
     image(Market, mapx, mapy);
   } else if (IntersectionBool) {
     image(Intersection, mapx, mapy);
-  } else if (TrainextBool) {
-    image(Trainext, mapx, mapy);
-  } else if (TrainintBool) {
-    image(Trainint, mapx, mapy);
-  }
-  if (AngelTalkBool && talkIndex != AngelTalk.length - 1) {
-    image(AngelMira, 273, 115);
   }
   bc.display();
-  if (AngelTalkBool) {
-    textSize(18);
-    text(AngelTalk[talkIndex], 5, 100);
-  }
-  /*
   text("Background xcor: " + mapx + "\nBackground ycor: " + mapy, 400, 300);
   text("Char xcor: " + bc.getxcor() + "\nChar ycor : " + bc.getycor(), 300, 300);
   text("cX, xY: " + currentX + ", " + currentY, 100, 300);
   text("Collision cor: " + collisionMap[currentX][currentY], 200, 300);
-  //fill(0, 102, 153);
-  */
+  fill(0, 102, 153);
   move();
 }
+*/
