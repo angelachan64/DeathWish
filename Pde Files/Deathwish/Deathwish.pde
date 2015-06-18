@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.*;
+
 PImage Cint, Cext, Market, Intersection, Trainext, Trainint, Castleext, Castleint;
 PImage RoyalHall, CastUp1, CastUp2, CastDungeon, Residint, Residext;
 PImage AngelMira;
@@ -10,8 +13,8 @@ int talkIndex;
 boolean up, down, left, right;
 boolean CintBool, CextBool, MarketBool, IntersectionBool, TrainextBool, TrainintBool;
 boolean CastleextBool, Cast1Bool, Cast2Bool, Cast3Bool;
-boolean AngelTalkBool;
-String[] AngelTalk;
+boolean talkBool, AngelTalkBool;
+String[] talkScript;
 char[][] collisionMap;
 int currentX, currentY;
 
@@ -52,9 +55,9 @@ void setup() {
   up = false; down = false; left = false; right = false; 
   CintBool = true; CextBool = false; MarketBool = false;
   time = 0;
-  AngelTalkBool = false;
+  AngelTalkBool = false; talkBool = false;
   talkIndex = 0;
-  AngelTalk = loadStrings("AngelTalk.dat");
+  talkScript = loadStrings("AngelTalk.dat");
   loadCollisions("CathedralCollision.dat");
   currentX = maxX/2; currentY = 38;
 }
@@ -73,7 +76,7 @@ void loadCollisions(String file) {
 }
 
 void keyPressed() {
-  if (key == CODED) {
+  if (key == CODED && !(talkBool)) {
     if (keyCode == 38) {
       up = true;
     } if (keyCode == 40) {
@@ -85,10 +88,71 @@ void keyPressed() {
     }
   }
   if (CintBool && key == 'z' || key == 'Z') {
-    if (AngelTalkBool == false) {
-      AngelTalkBool = true;
-    } else if (talkIndex < AngelTalk.length - 1) {
+    if (talkBool == false && Math.abs(mapx - -100) < 100 && Math.abs(mapy - -100) < 100) {
+      talkBool = true;
+      talkIndex = 0;
+      bc.setspnum(12);
+    } else if (talkIndex < 17 && talkBool == true) {
+       talkIndex = talkIndex + 1;
+       if (talkIndex == 17) {
+         talkBool = false;
+       }
+    } else if (talkBool == false && Math.abs(bc.getxcor() - 180) < 20 && Math.abs(mapy - 25) < 20) {
+      talkBool = true;
+      talkIndex = 17;
+      bc.setspnum(12);
+    } else if (talkIndex < 22 && talkBool == true) {
+       talkIndex = talkIndex + 1;
+       if (talkIndex == 22) {
+         talkBool = false;
+       }
+    } else if (talkBool == false && Math.abs(mapx - -210) < 20 && Math.abs(mapy - 25) < 20) {
+      talkBool = true;
+      talkIndex = 22;
+      bc.setspnum(12);
+    } else if (talkIndex < 26 && talkBool == true) {
+      talkIndex = talkIndex + 1;
+      if (talkIndex == 26) {
+        talkBool = false;
+      }  
+    } else if (talkBool == false && Math.abs(mapx - -35) < 20 && Math.abs(bc.getycor() - 275) < 20) {
+      talkBool = true;
+      talkIndex = 26;
+      bc.setspnum(4);
+    } else if (talkIndex < 31 && talkBool == true) {
+      talkIndex = talkIndex + 1;
+      if (talkIndex == 31) {
+        talkBool = false;
+      } 
+    }
+  } else if (CextBool && key == 'z' || key == 'Z') {
+    if (talkBool == false && Math.abs(mapx - -195) < 20 && Math.abs(bc.getycor() - 190) < 20) {
+      talkBool = true;
+      talkIndex = 31;
+      bc.setspnum(8);
+    } else if (talkIndex < 35 && talkBool == true) {
+      talkIndex = talkIndex + 1;
+      if (talkIndex == 35) {
+        talkBool = false;
+      }  
+    } else if (talkBool == false && Math.abs(mapx - -50) < 20 && Math.abs(bc.getycor() - 195) < 20) {
+      talkBool = true;
+      talkIndex = 35;
+      bc.setspnum(12);
+    } else if (talkIndex < 38 && talkBool == true) {
+      talkIndex = talkIndex + 1;
+      if (talkIndex == 38) {
+        talkBool = false;
+      } 
+    } else if (talkBool == false && Math.abs(mapx - -275) < 20 && Math.abs(bc.getycor() - 195) < 20) {
+      talkBool = true;
+      talkIndex = 35;
+      bc.setspnum(12);
+    } else if (talkIndex < 38 && talkBool == true) {
        talkIndex = talkIndex + 1; 
+       if (talkIndex == 38) {
+        talkBool = false;
+      } 
     }
   }
 }
@@ -225,15 +289,15 @@ void move() {
       IntersectionBool = false;
       TrainextBool = true;
       bc.setxcor(15);
-      bc.setycor(190);
+      bc.setycor(260);
       mapx = xcorTrainext;
       mapy = ycorTrainext;
-      mapxMIN = -400;
+      mapxMIN = -355;
       mapxMAX = 0;
-      mapyMIN = -300;
+      mapyMIN = -220;
       mapyMAX = -5;
-      loadCollisions("IntersectionCollision.dat");
-      currentX = 1; currentY = maxY - 5;
+      loadCollisions("TrainintCollision.dat");
+      currentX = 1; currentY = maxY - 3;
     }
     //Animation
     time++;
@@ -259,20 +323,23 @@ void draw() {
   } else if (TrainintBool) {
     image(Trainint, mapx, mapy);
   }
-  if (AngelTalkBool && talkIndex != AngelTalk.length - 1) {
+  if (talkBool && talkIndex < 17) {
     image(AngelMira, 273, 115);
   }
   bc.display();
-  if (AngelTalkBool) {
+  if (talkBool && CintBool) {
     textSize(18);
-    text(AngelTalk[talkIndex], 5, 100);
+    text(talkScript[talkIndex], 5, 100);
+  } else if (talkBool && CextBool) {
+    textSize(18);
+    text(talkScript[talkIndex], 5, 100);
   }
-  /*
+  text("TalkBool: " + talkBool, 10, 300);
+  text("TalkIndex: " + talkIndex, 250, 300);
   text("Background xcor: " + mapx + "\nBackground ycor: " + mapy, 400, 300);
-  text("Char xcor: " + bc.getxcor() + "\nChar ycor : " + bc.getycor(), 300, 300);
-  text("cX, xY: " + currentX + ", " + currentY, 100, 300);
-  text("Collision cor: " + collisionMap[currentX][currentY], 200, 300);
+  text("Char xcor: " + bc.getxcor() + "\nChar ycor : " + bc.getycor(), 300, 350);
+  //text("cX, xY: " + currentX + ", " + currentY, 100, 300);
+  //text("Collision cor: " + collisionMap[currentX][currentY], 200, 300);
   //fill(0, 102, 153);
-  */
   move();
 }
