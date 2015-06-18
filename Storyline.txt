@@ -1,26 +1,260 @@
 Main Character (bc for short)
 
-BC wakes up and finds self in strange cathedral
-BC : What is this place?
-BC looks around (turns right and left, up and down)
-BC turns back down to look towards door
+Eren wakes up and finds self in strange cathedral
+Eren : What is this place?
+Eren looks around (turns right and left, up and down)
+Eren turns back down to look towards door
 Angel appears behind BC
 Angel : I see you've made it safely.
-BC turns around
-BC : An angel? Am I...Am I dead??
+Eren turns around
+Eren : An angel? Am I...Am I dead??
 Angel : Unfortunately so. On the bright side, welcome to Goldcrest, the center of Arcadia.
-BC : ...
-BC : ... ...
-BC : ... ... ...
+Eren : ...
+Eren : ... ...
+Eren : ... ... ...
 Angel : ?
-BC : So I'm dead.
+Eren : So I'm dead.
 Angel : *Laughs* Worry not. Arcadia is a pleasant place and I am sure you'll enjoy your eternity here.
-BC : But--
+Eren : But--
 Angel : I must be going back to tend to Lord Kyran. Why don't you introduce yourself to the townspeople?
         May He watch over you in your endeavors.
 The angel disappears
-BC : I'm so confused...
+Eren : I'm so confused...
 
 GAMEPLAY STARTS
-Priestess 1 (by the bookshelf) : Are you new around here too? I just got here last week and I have so much to learn...
-Priestess 2 (by the stained glass window) : 
+
+----------------------------------------------------------------------------------------------------
+
+WHEN YOU TALK TO THE PRIESTESS BY THE BOOKSHELF
+Priestess Aurora : Are you new around here too? I just got here last week and I have so much to
+                learn...
+Eren : Yeah I'm new around here, too.
+Priestess Aurora : Well, I should get back to studying.
+
+TO BE IMPLEMENTED LATER
+Ask to help? Press Y for yes and N for no.
+Eren : Can I help?
+Priestess Aurora : Well, you could read some books with me I guess.
+
+WHEN YOU INTERACT WITH BOOKSHELF
+(text chosen at random, you can choose to continue up to ten times.)
+You read a few books and learn about the history of Arcadia.
+Would you like to continue? Press Y for yes and N for no.
+
+You read a few books and learn about the different cities in Arcadia.
+Would you like to continue? Press Y for yes and N for no.
+
+You read a few books and learn about Lady Mira.
+Would you like to continue? Press Y for yes and N for no.
+
+You read a few books and learn about Lord Kyran.
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER FIVE TIMES
+You are too tired to continue reading! Try again later.
+                                
+----------------------------------------------------------------------------------------------------
+
+WHEN YOU TALK TO THE PRIESTESS BY THE WINDOW
+Priestess Alina : Why did I take this job... Always holed up in here...
+Eren : I can see how this gets boring.
+Priestess Alina : ...Sigh
+
+TO BE IMPLEMENTED LATER
+Ask to help? Press Y for yes and N for no.
+Eren : Can I help?
+Priestess Alina : Could you tell me what Arcadia's like outside of this stupid cathedral?
+(text chosen at random, can continue up to ten times.)
+Eren talks to the Priestess about some adventures.
+Would you like to continue? Press Y for yes and N for no.
+
+Eren talks to the Priestess about the different cities in Arcadia.
+Would you like to continue? Press Y for yes and N for no.
+
+Eren talks to the Priestess about the royal palace and the royal family.
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER FIVE TIMES
+You can't think of anything to tell her! Try again later.
+
+----------------------------------------------------------------------------------------------------
+
+WHEN YOU TALK TO THE PRIESTESS BY THE DOOR
+Priestess Caroline : Hello! Welcome to the Cathedral of Goldcrest! Have you paid your devotions
+                    to Our Lady Mira yet?
+Eren : I just got here...
+Priestess Caroline : I hope you enjoy your stay!
+
+TO BE IMPLEMENTED LATER
+Ask to help? Press Y for yes and N for no.
+Eren : Can I help?
+Priestess Caroline : Could you clean up the alter for me? Thanks!
+
+WHEN YOU INTERACT WITH THE ALTER (random, up to 5)
+You clean up some spilled wine and wipe the table down.
+Would you like to continue? Press Y for yes and N for no.
+
+You brush some crumbs off the alter and refill the bread basket.
+Would you like to continue? Press Y for yes and N for no.
+
+You dust off the Holy Book and polish the incense burner.
+Would you like to continue? Press Y for yes and N for no.
+
+You clean the statue of Lady Mira. Man, what a big statue!
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER FIVE TIMES
+The alter is already spotless! Try again later.
+
+   
+----------------------------------------------------------------------------------------------------
+                            
+WHEN YOU TALK TO HEAD PRIESTESS
+Head Priestess (outside) : Hello, Eren, and welcome to Arcadia. Make yourself at home. You'll be
+                        staying for eternity after all.
+Eren : H-how did you know my name?
+Head Priestess : *Smiles* Our Lady always informs us of newcomers.
+
+TO BE IMPLEMENTED LATER
+Ask to help? Press Y for yes and N for no.
+Eren : Can I help?
+Head Priestess : Please help me water the flowers in your spare time.
+
+WHEN YOU INTERACT WITH THE FLOWER POTS (same text, up to five)
+You water the flowers a little.
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER FIVE TIMES
+If you water them any more, you'll kill them! Try again later.
+
+----------------------------------------------------------------------------------------------------
+
+WHEN YOU TALK TO SOLDIERS
+Soldier : ...
+Eren : ...Hello?
+Soldier : I am on duty. Do not disturb me.
+
+TO BE IMPLEMENTED LATER
+Ask to help? Press Y for yes and N for no.
+Eren : Can I help?
+Soldier : Tend to the graves if you must.
+
+WHEN YOU INTERACT WITH THE GRAVES (random, up to five)
+You spot a ghost and convince it to stop scaring people away.
+Would you like to continue? Press Y for yes and N for no.
+
+You switch out the old flowers for new ones.
+Would you like to continue? Press Y for yes and N for no.
+
+You clean up the gravestones.
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER FIVE TIMES
+The graves already look good as new! Try again later.
+
+----------------------------------------------------------------------------------------------------
+
+WHEN YOU TALK TO THE LADIES IN THE HOUSES
+Woman : I'm sorry I must finish cleaning the house.
+Eren : Oh, okay...
+
+TO BE IMPLEMENTED LATER
+Ask to help? Press Y for yes and N for no.
+Eren : Can I help?
+Woman : I suppose so...you can help me arrange some things around the house if you'd like.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU INTERACT WITH BEDS (in this order)
+You make the bed and fluff the pillows.
+Would you like to continue? Press Y for yes and N for no.
+
+You make the other bed and fluff the pillows.
+
+AFTER TWO BEDS
+These beds are already made! Try again later.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU INTERACT WITH ANY WINDOW (random, up to four)
+You clean the windows with some soapy water.
+Would you like to continue? Press Y for yes and N for no.
+
+You wash the curtains and hang them back up.
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER FOUR WINDOWS
+The windows are all spotless now! Try again later.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU INTERACT WITH BOOKSHELVES (in this order)
+You put the books in alphabetical order.
+Would you like to continue? Press Y for yes and N for no.
+
+You put the books in the other bookshelf in size order.
+Would you like to continue? Press Y for yes and N for no.
+
+You put the books in the last bookshelf in age order.
+
+AFTER THREE BOOKSHELVES
+The bookshelves are all neatly organized! Try again later.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU INTERACT WITH CLOTHES (same text, up to two)
+You wash the clothes and hang them back up.
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER TWO CLOTHING DISPLAYS
+The clothes are still clean! Try again later.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU INTERACT WITH PANTRY (random, once)
+You arrange the contents of the pantry by color.
+
+You refill the empty jars with new spices and ingredients.
+
+You arrange the contents of the pantry by taste.
+
+You clean out the jars and put the contents back in.
+
+AFTER ONE PANTRY CLEANING
+The pantry is already organized! Try again later.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU INTERACT WITH CHESTS (random, up to two)
+The chest is locked so you just polish the outside.
+Would you like to continue? Press Y for yes and N for no.
+
+The chest is unlocked so you arrange the contents by color.
+Would you like to continue? Press Y for yes and N for no.
+
+The chest is locked so you just dust the outside.
+Would you like to continue? Press Y for yes and N for no.
+
+The chest is unlocked so you arrange the contents by use.
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER TWO CHEST CLEANINGS
+The chests are already organized! Try again later.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU INTERACT WITH FIREPLACE (random, once)
+You refill the fireplace with wood.
+
+You clean out the ashes in the fireplace.
+
+You dust the pictures on top of the fireplace.
+
+You relight the candles on top of the fireplace.
+
+AFTER ONE FIREPLACE CLEANING
+The fireplace is already impeccable! Try again later.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU INTERACT WITH ANYTHING ELSE (same text, up to 5)
+You dust down some furniture.
+Would you like to continue? Press Y for yes and N for no.
+
+AFTER FIVE CLEANINGS
+There's not a speck of dust in this house! Try again later.
+
+----------------------------------------------------------------------------------------------------
+
+COOL MEANINGS
+Arcadia - Heaven
+Kyran - Lord
+Eren - Holy
+Mira - Peace
+Aurora - New Beginning (Sunrise)
+Alina - Lonely
+Caroline - Happy
